@@ -6,6 +6,7 @@ void PhoneBook::AddContact(void)
 	std::string FirstName;
 	std::string LastName;
 	std::string NickName;
+
 	std::cout
 		<< "  Type the first name: ";
 	std::cin >> FirstName;
@@ -19,7 +20,6 @@ void PhoneBook::AddContact(void)
 	std::cout
 		<< "  Chose the nick name:  ";
 	std::cin >> NickName;
-	ClearScreen();
 	if (index < 2)
 		_contacts[index] = Contact(index, FirstName, LastName, NickName);
 	else
@@ -40,7 +40,6 @@ void PhoneBook::AddContact(void)
 void PhoneBook::ShowContacts()
 {
 	std::cout
-		<< std::endl
 		<< "  --------------------------------------"
 		<< std::endl
 		<< "  index|first-name|last--name|nick--name"

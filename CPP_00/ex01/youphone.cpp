@@ -22,23 +22,27 @@ void PrintOptions(std::string value, int LastOption)
 			message = "";
 			break;
 		case (0):
-			message = "  Type your choice: ";
+			message = "   Type your choice → ";
 			break;
 		case (1):
 			value = "    Contact Succefully added";
-			message = "  Type your choice: ";
+			message = "   Type your choice → ";
 			break;
 		case (2):
 			message = "  in progress";
 			break;
+		case (3):
+			value = "    Invalid option, try again!" ;
+			message = "   Type your choice → ";
+			break;
 	}
-	std::cout << "   Welcome to 90s digital phonebook  " << std::endl;
+	std::cout << "     Welcome to 90s digital phonebook  " << std::endl;
 	std::cout << GREEN;
-	std::cout << " -------------------------------------" << std::endl;
-	std::cout << "| ADD    " << ":    save a new contact      |" << std::endl;
-	std::cout << "| SEARCH " << ": display a specific contact |" << std::endl;
-	std::cout << "| EXIT   " << ":     quit the program       |" << std::endl;
-	std::cout << " -------------------------------------" << std::endl;
+	std::cout << "   -------------------------------------" << std::endl;
+	std::cout << "  | ADD    " << ":    save a new contact      |" << std::endl;
+	std::cout << "  | SEARCH " << ": display a specific contact |" << std::endl;
+	std::cout << "  | EXIT   " << ":     quit the program       |" << std::endl;
+	std::cout << "   -------------------------------------" << std::endl;
 	std::cout << value << std::endl;
 	std::cout << RESET << std::endl;
 	std::cout
@@ -73,26 +77,35 @@ int	main(void)
 	PhoneBook	phonebook;
 
 	ClearScreen();
-	while (1)
+	while (true)
 	{
 		PrintOptions("", LastOption);
 		std::cin >> option;
 		option= toUpper(option);
-		ClearScreen();
 		if (option.compare("ADD") == 0)
 		{
 			ClearScreen();
 			PrintOptions("    Adding a contact", -1);
 			phonebook.AddContact();
 			LastOption = 1;
+			ClearScreen();
 		}
 		else if (option.compare("SHOW") == 0)
 		{
+			ClearScreen();
+			PrintOptions("    Contacts List:", -1);
 			phonebook.ShowContacts();
+			std::cin.ignore();
+			std::cout << "    Press Enter to continue...";
+			std::cin.get();
+			ClearScreen();
 		}
 		else if (option.compare("EXIT") == 0)
 			break;
 		else
-			std::cout << "Invalid option, try again!" << std::endl;
+		{
+			ClearScreen();
+			LastOption = 3;
+		}
 	}
 }
