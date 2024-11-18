@@ -12,17 +12,24 @@
 
 #include "include.hpp"
 
-void PrintOptions()
+void PrintOptions(std::string value = "")
 {
+	std::cout << "   Welcome to 90s digital phonebook  " << std::endl;
+	std::cout << GREEN;
 	std::cout << " -------------------------------------" << std::endl;
 	std::cout << "| ADD    " << ":    save a new contact      |" << std::endl;
 	std::cout << "| SEARCH " << ": display a specific contact |" << std::endl;
 	std::cout << "| EXIT   " << ":     quit the program       |" << std::endl;
 	std::cout << " -------------------------------------" << std::endl;
+	std::cout << value << std::endl;
+	std::cout << RESET << std::endl;
 }
 
-void clearScreen() {
-	for (int i = 0; i < 50; i++)
+void ClearScreen(std::string str = "", int lines = 2)
+{
+	std::cout << "\033[2J\033[1;1H"; //<-clean the screen
+	std::cout << str;
+	for (int i = 0; i != lines; i++)
 		std::cout << std::endl;
 }
 
@@ -44,15 +51,18 @@ int	main(void)
 	std::string NickName;
 	PhoneBook	phonebook;
 
+	ClearScreen();
 	PrintOptions();
+	std::cout
+		<< "  Type your choice: ";
 	while (1)
 	{
-		std::cout
-			<< "  Chose a option: ";
 		std::cin >> option;
 		option= toUpper(option);
+		ClearScreen();
 		if (option.compare("ADD") == 0)
 		{
+			PrintOptions("Adding a contact");
 			phonebook.AddContact();
 		}
 		else if (option.compare("SHOW") == 0)
@@ -63,6 +73,5 @@ int	main(void)
 			break;
 		else
 			std::cout << "Invalid option, try again!" << std::endl;
-		//std::cout << "\033[2J\033[1;1H";
 	}
 }
