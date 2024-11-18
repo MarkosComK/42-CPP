@@ -8,17 +8,17 @@ void PhoneBook::AddContact(void)
 	std::string NickName;
 
 	std::cout
-		<< "  Type the first name: ";
+		<< "   Type the first name → ";
 	std::cin >> FirstName;
 	ClearScreen();
 	PrintOptions("    Adding a contact", -1);
 	std::cout
-		<< "  Type the last name:  ";
+		<< "   Type the last name → ";
 	std::cin >> LastName;
 	ClearScreen();
 	PrintOptions("    Adding a contact", -1);
 	std::cout
-		<< "  Chose the nick name:  ";
+		<< "   Chose the nick name → ";
 	std::cin >> NickName;
 	if (index < 2)
 		_contacts[index] = Contact(index, FirstName, LastName, NickName);
@@ -40,16 +40,24 @@ void PhoneBook::AddContact(void)
 void PhoneBook::ShowContacts()
 {
 	std::cout
-		<< "  --------------------------------------"
+		<<
+		CYAN
+		<< "   --------------------------------------"
 		<< std::endl
-		<< "  index|first-name|last--name|nick--name"
+		<<
+		RESET
+		<< "   index|first-name|last--name|nick--name"
 		<< std::endl;
 	for (int i = 0; i < LIST_SIZE; i++)
 	{
 		_contacts[i].PrintContact(i);
 	}
 	std::cout
-		<< "  --------------------------------------"
+		<<
+		CYAN
+		<< "   --------------------------------------"
 		<< std::endl
+		<<
+		RESET
 		<< std::endl;
 }

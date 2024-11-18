@@ -35,16 +35,19 @@ void PrintOptions(std::string value, int LastOption)
 			value = "    Invalid option, try again!" ;
 			message = "   Type your choice → ";
 			break;
+		case (4):
+			message = MAGENTA "               Bye, bye! 🥹" RESET;
+			break;
 	}
 	std::cout << "     Welcome to 90s digital phonebook  " << std::endl;
 	std::cout << GREEN;
-	std::cout << "   -------------------------------------" << std::endl;
-	std::cout << "  | ADD    " << ":    save a new contact      |" << std::endl;
-	std::cout << "  | SEARCH " << ": display a specific contact |" << std::endl;
-	std::cout << "  | EXIT   " << ":     quit the program       |" << std::endl;
-	std::cout << "   -------------------------------------" << std::endl;
+	std::cout << "   --------------------------------------" << std::endl;
+	std::cout << "  |  ADD    " << ":    save a new contact      |" << std::endl;
+	std::cout << "  |  SEARCH " << ": display a specific contact |" << std::endl;
+	std::cout << "  |  EXIT   " << ":     quit the program       |" << std::endl;
+	std::cout << "   --------------------------------------" << std::endl;
 	std::cout << value << std::endl;
-	std::cout << RESET << std::endl;
+	std::cout << RESET;
 	std::cout
 		<< message;
 }
@@ -101,7 +104,14 @@ int	main(void)
 			ClearScreen();
 		}
 		else if (option.compare("EXIT") == 0)
+		{
+			ClearScreen();
+			PrintOptions("", 4);
+			std::cout <<
+				std::endl <<
+				std::endl;
 			break;
+		}
 		else
 		{
 			ClearScreen();

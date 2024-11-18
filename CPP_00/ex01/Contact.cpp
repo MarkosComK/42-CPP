@@ -13,7 +13,7 @@ void Contact::PrintContact(int index)
 
 	if (this->_FirstName.compare("") != 0)
 	{
-		std::cout << "  ";
+		std::cout << "   ";
 		std::cout <<  std::setw(5) << index;
 		std::cout << "|";
 	}
