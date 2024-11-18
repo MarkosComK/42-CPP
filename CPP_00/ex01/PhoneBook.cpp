@@ -1,12 +1,17 @@
-#include "PhoneBook.hpp"
+#include "include.hpp"
 
-
-void PhoneBook::addContact(std::string FName, std::string LName, std::string NName)
+void PhoneBook::AddContact(std::string FName, std::string LName, std::string NName)
 {
-	contacts[0] = Contact(FName, LName, NName);
+	static int index = 0;
+	if (index < 9)
+		_contacts[index] = Contact(FName, LName, NName);
+	index++;
 }
 
-void PhoneBook::showContact()
+void PhoneBook::ShowContacts()
 {
-	contacts[0].PrintContact();
+	for (int i = 0; i < 9; i++)
+	{
+		_contacts[i].PrintContact();
+	}
 }

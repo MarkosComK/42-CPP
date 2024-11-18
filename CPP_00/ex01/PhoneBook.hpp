@@ -1,15 +1,19 @@
-#include <iostream>
-#include "./Contact.hpp"
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
+#include "include.hpp"
+
 
 class PhoneBook
 {
 	private:
-		Contact contacts[9];
+		Contact _contacts[9];
 
 	public:
 		PhoneBook()
 		{
 		}
-		void addContact(std::string FName, std::string LName, std::string NName);
-		void showContact();
+		void AddContact(std::string FName, std::string LName, std::string NName);
+		void ShowContacts();
 };
+
+#endif

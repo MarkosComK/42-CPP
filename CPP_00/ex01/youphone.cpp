@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "./PhoneBook.hpp"
+#include "include.hpp"
 
 void PrintOptions()
 {
@@ -43,12 +42,6 @@ enum options
 	EXIT,
 };
 
-typedef struct
-{
-	int			type;
-	std::string	value;
-}	option;
-
 int	main(void)
 {
 	std::string	option;
@@ -66,18 +59,26 @@ int	main(void)
 	std::string FirstName;
 	std::string LastName;
 	std::string NickName;
-	if (option.compare("ADD") == 0)
+	while (1)
 	{
-		std::cout
-			<< "Type the first name: ";
-		std::cin >> FirstName;
-		std::cout
-			<< "Type the last name: ";
-		std::cin >> LastName;
-		std::cout
-			<< "Chose the nick name: ";
-		std::cin >> NickName;
+		if (option.compare("ADD") == 0)
+		{
+			std::cout
+				<< "Type the first name: ";
+			std::cin >> FirstName;
+			std::cout
+				<< "Type the last name: ";
+			std::cin >> LastName;
+			std::cout
+				<< "Chose the nick name: ";
+			std::cin >> NickName;
+			phonebook.AddContact(FirstName, LastName, NickName);
+		}
+		if (option.compare("SHOW") == 0)
+		{
+			phonebook.ShowContacts();
+		}
+		if (option.compare("EXIT"))
+			break;
 	}
-	phonebook.addContact(FirstName, LastName, NickName);
-	phonebook.showContact();
 }

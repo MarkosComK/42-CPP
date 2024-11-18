@@ -1,4 +1,6 @@
-#include <iostream>
+#ifndef CONTACT_HPP
+#define CONTACT_HPP
+#include "include.hpp"
 
 class Contact
 {
@@ -11,3 +13,5 @@ class Contact
 		Contact(std::string FName = "", std::string LName = "", std::string NName = "");
 		void PrintContact(void);
 };
+
+#endif
