@@ -33,7 +33,7 @@ void Contact::PrintContact(int index)
 	}
 }
 
-void Contact::ReduceIndex()
+void Contact::ReduceIndex(int index)
 {
-	this->_Index = this->_Index - 1;
+	this->_Index = index;
 }

@@ -13,7 +13,7 @@ class Contact
 	public:
 		Contact(int Index = 0, std::string FName = "", std::string LName = "", std::string NName = "");
 		void PrintContact(int index);
-		void ReduceIndex();
+		void ReduceIndex(int index);
 };
 
 #endif

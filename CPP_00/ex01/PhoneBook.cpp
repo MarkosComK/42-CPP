@@ -23,9 +23,10 @@ void PhoneBook::AddContact(void)
 		_contacts[0] = Contact();
 		for (i = 0; i < 2; i++)
 		{
+			_contacts[i + 1].ReduceIndex(i);
 			_contacts[i] = _contacts[i + 1];
-			_contacts[i].ReduceIndex();
 		}
+		i--;
 		_contacts[i] = Contact(i, FirstName, LastName, NickName);
 	}
 	index++;
