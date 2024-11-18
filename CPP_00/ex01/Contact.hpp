@@ -5,13 +5,15 @@
 class Contact
 {
 	private:
+		int			_Index;
 		std::string _FirstName;
 		std::string _LastName;
 		std::string _NickName;
 
 	public:
-		Contact(std::string FName = "", std::string LName = "", std::string NName = "");
-		void PrintContact(void);
+		Contact(int Index = 0, std::string FName = "", std::string LName = "", std::string NName = "");
+		void PrintContact(int index);
+		void ReduceIndex();
 };
 
 #endif

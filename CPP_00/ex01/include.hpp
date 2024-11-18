@@ -2,10 +2,10 @@
 #define INCLUDE_H
 
 #include <iostream>
-
-typedef std::string str;
-
+#include <iomanip>
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
+
+#define LIST_SIZE
 
 #endif

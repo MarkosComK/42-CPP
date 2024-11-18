@@ -1,18 +1,39 @@
 #include "include.hpp"
 
-Contact::Contact(std::string FName, std::string LName, std::string NName)
+Contact::Contact(int Index, std::string FName, std::string LName, std::string NName)
 {
+	this->_Index = Index;
 	this->_FirstName = FName;
 	this->_LastName = LName;
 	this->_NickName = NName;
 }
 
-void Contact::PrintContact(void)
+void Contact::PrintContact(int index)
 {
-	if (this->_FirstName != "")
-		std::cout << this->_FirstName << std::endl;
-	if (this->_LastName != "")
-		std::cout << this->_LastName << std::endl;
-	if (this->_NickName != "")
-		std::cout << this->_NickName << std::endl;
+
+	if (this->_FirstName.compare("") != 0)
+	{
+		std::cout << "  ";
+		std::cout <<  std::setw(5) << index;
+		std::cout << "|";
+	}
+	if (this->_FirstName.compare("") != 0)
+	{
+		std::cout << std::setw(10) << this->_FirstName;
+		std::cout << "|";
+	}
+	if (this->_LastName.compare("") != 0)
+	{
+		std::cout << std::setw(10) << this->_LastName;
+		std::cout << "|";
+	}
+	if (this->_NickName.compare("") != 0)
+	{
+		std::cout << std::setw(10) << this->_NickName << std::endl;
+	}
+}
+
+void Contact::ReduceIndex()
+{
+	this->_Index = this->_Index - 1;
 }

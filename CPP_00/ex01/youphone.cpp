@@ -35,50 +35,36 @@ std::string toUpper(std::string option)
 	return (option);
 }
 
-enum options
-{
-	ADD,
-	SEARCH,
-	EXIT,
-};
-
 int	main(void)
 {
 	std::string	option;
 	std::string	contact1 = "contact1";
-	PhoneBook	phonebook;
-
-	PrintOptions();
-	std::cout
-		<< "  Chose a option: ";
-	std::cin >> option;
-	option= toUpper(option);
-	std::cout
-		<< "  You entered: " << option <<
-	std::endl;
 	std::string FirstName;
 	std::string LastName;
 	std::string NickName;
+	PhoneBook	phonebook;
+
+	PrintOptions();
 	while (1)
 	{
+		std::cout
+			<< "  Chose a option: ";
+		std::cin >> option;
+		option= toUpper(option);
+		std::cout
+			<< "  You entered: " << option <<
+		std::endl;
 		if (option.compare("ADD") == 0)
 		{
-			std::cout
-				<< "Type the first name: ";
-			std::cin >> FirstName;
-			std::cout
-				<< "Type the last name: ";
-			std::cin >> LastName;
-			std::cout
-				<< "Chose the nick name: ";
-			std::cin >> NickName;
-			phonebook.AddContact(FirstName, LastName, NickName);
+			phonebook.AddContact();
 		}
-		if (option.compare("SHOW") == 0)
+		else if (option.compare("SHOW") == 0)
 		{
 			phonebook.ShowContacts();
 		}
-		if (option.compare("EXIT"))
+		else if (option.compare("EXIT") == 0)
 			break;
+		else
+			std::cout << "Invalid option, try again!" << std::endl;
 	}
 }
