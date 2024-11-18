@@ -20,5 +20,7 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
+void ClearScreen(std::string str = "", int lines = 2);
+void PrintOptions(std::string value = "", int LastOption = 0);
 
 #endif

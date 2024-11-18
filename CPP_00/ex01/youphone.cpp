@@ -12,8 +12,26 @@
 
 #include "include.hpp"
 
-void PrintOptions(std::string value = "")
+void PrintOptions(std::string value, int LastOption)
 {
+	std::string message;
+
+	switch (LastOption)
+	{
+		case (-1):
+			message = "";
+			break;
+		case (0):
+			message = "  Type your choice: ";
+			break;
+		case (1):
+			value = "    Contact Succefully added";
+			message = "  Type your choice: ";
+			break;
+		case (2):
+			message = "  in progress";
+			break;
+	}
 	std::cout << "   Welcome to 90s digital phonebook  " << std::endl;
 	std::cout << GREEN;
 	std::cout << " -------------------------------------" << std::endl;
@@ -23,9 +41,11 @@ void PrintOptions(std::string value = "")
 	std::cout << " -------------------------------------" << std::endl;
 	std::cout << value << std::endl;
 	std::cout << RESET << std::endl;
+	std::cout
+		<< message;
 }
 
-void ClearScreen(std::string str = "", int lines = 2)
+void ClearScreen(std::string str, int lines)
 {
 	std::cout << "\033[2J\033[1;1H"; //<-clean the screen
 	std::cout << str;
@@ -45,6 +65,7 @@ std::string toUpper(std::string option)
 int	main(void)
 {
 	std::string	option;
+	int	LastOption = 0;
 	std::string	contact1 = "contact1";
 	std::string FirstName;
 	std::string LastName;
@@ -52,18 +73,18 @@ int	main(void)
 	PhoneBook	phonebook;
 
 	ClearScreen();
-	PrintOptions();
-	std::cout
-		<< "  Type your choice: ";
 	while (1)
 	{
+		PrintOptions("", LastOption);
 		std::cin >> option;
 		option= toUpper(option);
 		ClearScreen();
 		if (option.compare("ADD") == 0)
 		{
-			PrintOptions("Adding a contact");
+			ClearScreen();
+			PrintOptions("    Adding a contact", -1);
 			phonebook.AddContact();
+			LastOption = 1;
 		}
 		else if (option.compare("SHOW") == 0)
 		{

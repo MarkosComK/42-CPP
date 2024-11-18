@@ -9,19 +9,17 @@ void PhoneBook::AddContact(void)
 	std::cout
 		<< "  Type the first name: ";
 	std::cin >> FirstName;
-	std::cout << "\033[2J\033[1;1H"; //<-clean the screen
-	std::cout <<
-	std::endl;
+	ClearScreen();
+	PrintOptions("    Adding a contact", -1);
 	std::cout
 		<< "  Type the last name:  ";
 	std::cin >> LastName;
-	std::cout << "\033[2J\033[1;1H"; //<-clean the screen
-	std::cout <<
-	std::endl;
+	ClearScreen();
+	PrintOptions("    Adding a contact", -1);
 	std::cout
 		<< "  Chose the nick name:  ";
 	std::cin >> NickName;
-	std::cout << "\033[2J\033[1;1H"; //<-clean the screen
+	ClearScreen();
 	if (index < 2)
 		_contacts[index] = Contact(index, FirstName, LastName, NickName);
 	else
