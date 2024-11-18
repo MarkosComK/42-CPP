@@ -51,9 +51,6 @@ int	main(void)
 			<< "  Chose a option: ";
 		std::cin >> option;
 		option= toUpper(option);
-		std::cout
-			<< "  You entered: " << option <<
-		std::endl;
 		if (option.compare("ADD") == 0)
 		{
 			phonebook.AddContact();
@@ -66,5 +63,6 @@ int	main(void)
 			break;
 		else
 			std::cout << "Invalid option, try again!" << std::endl;
+		//std::cout << "\033[2J\033[1;1H";
 	}
 }

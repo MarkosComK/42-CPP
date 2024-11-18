@@ -6,7 +6,7 @@
 class PhoneBook
 {
 	private:
-		Contact _contacts[8];
+		Contact _contacts[LIST_SIZE + 1];
 
 	public:
 		PhoneBook()

@@ -21,7 +21,7 @@ void PhoneBook::AddContact(void)
 	{
 		int i = 0;
 		_contacts[0] = Contact();
-		for (i = 0; i < 2; i++)
+		for (i = 0; i < LIST_SIZE; i++)
 		{
 			_contacts[i + 1].ReduceIndex(i);
 			_contacts[i] = _contacts[i + 1];
@@ -40,7 +40,7 @@ void PhoneBook::ShowContacts()
 		<< std::endl
 		<< "  index|first-name|last--name|nick--name"
 		<< std::endl;
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < LIST_SIZE; i++)
 	{
 		_contacts[i].PrintContact(i);
 	}
