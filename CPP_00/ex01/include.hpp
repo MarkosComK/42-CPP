@@ -15,6 +15,7 @@
 #define CYAN       "\033[36m"
 #define WHITE      "\033[37m"
 
+#include <cstring>
 #include <iostream>
 #include <iomanip>
 #include "Contact.hpp"
@@ -22,6 +23,6 @@
 
 void		ClearScreen(std::string str = "", int lines = 2);
 void		PrintOptions(std::string value = "", int LastOption = 0);
-std::string toUpper(std::string option);
+std::string	toUpper(std::string option);
 
 #endif

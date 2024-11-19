@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <iomanip>
+#include <cstring>
 #include "colors.hpp"
 #include "Contact.hpp"
 #include "PhoneBook.hpp"

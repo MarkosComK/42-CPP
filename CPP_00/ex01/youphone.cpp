@@ -25,7 +25,10 @@ int	main(void)
 	while (true)
 	{
 		PrintOptions("", LastOption);
-		std::cin >> option;
+		if (!std::getline(std::cin, option))
+		{
+			option = "EXIT";
+		}
 		option= toUpper(option);
 		if (option.compare("ADD") == 0)
 		{
@@ -40,7 +43,6 @@ int	main(void)
 			ClearScreen();
 			PrintOptions("    Contacts List:", -1);
 			phonebook.ShowContacts();
-			std::cin.ignore();
 			std::cout << "    Press Enter to continue...";
 			std::cin.get();
 			ClearScreen();
@@ -50,8 +52,8 @@ int	main(void)
 			ClearScreen();
 			PrintOptions("", 4);
 			std::cout <<
-				std::endl <<
-				std::endl;
+			std::endl <<
+			std::endl;
 			break;
 		}
 		else
