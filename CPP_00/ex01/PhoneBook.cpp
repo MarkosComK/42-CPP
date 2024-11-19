@@ -92,7 +92,8 @@ bool	PhoneBook::SearchContact()
 			RESET
 			<< "   index|first-name|last--name|nick--name"
 			<< std::endl;
-		_contacts[digit].PrintContact(digit);
+		if (!_contacts[digit].PrintContact(digit))
+			std::cout << RED "             Contact not found" RESET << std::endl;
 		std::cout
 			<<
 			CYAN

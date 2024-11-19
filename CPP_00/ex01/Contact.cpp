@@ -8,29 +8,37 @@ Contact::Contact(int Index, std::string FName, std::string LName, std::string NN
 	this->_NickName = NName;
 }
 
-void Contact::PrintContact(int index)
+bool Contact::PrintContact(int index)
 {
+	bool	found = false;
 
 	if (this->_FirstName.compare("") != 0)
 	{
 		std::cout << "   ";
 		std::cout <<  std::setw(5) << index;
 		std::cout << "|";
+		found = true;
 	}
 	if (this->_FirstName.compare("") != 0)
 	{
 		std::cout << std::setw(10) << this->_FirstName;
 		std::cout << "|";
+		found = true;
 	}
 	if (this->_LastName.compare("") != 0)
 	{
 		std::cout << std::setw(10) << this->_LastName;
 		std::cout << "|";
+		found = true;
 	}
 	if (this->_NickName.compare("") != 0)
 	{
 		std::cout << std::setw(10) << this->_NickName << std::endl;
+		found = true;
 	}
+	else
+		found = false;
+	return (found);
 }
 
 void Contact::ReduceIndex(int index)
