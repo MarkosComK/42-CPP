@@ -74,9 +74,17 @@ void	Account::displayAccountsInfos( void )
 
 void	Account::makeDeposit( int deposit )
 {
+	int p_amount;
 	_amount = _amount + deposit;
+	p_amount = _amount;
 	_nbDeposits += 1;
 	_totalNbDeposits += 1;
+	_totalAmount += deposit;
+	std::cout << "index:" << this->_accountIndex << ";";
+	std::cout << "p_amount:" << p_amount << ";";
+	std::cout << "deposit:" << deposit << ";";
+	std::cout << "amount:" << this->_amount << ";";
+	std::cout << "nb_deposits:" << this->_nbDeposits << std::endl;
 }
 
 bool	Account::makeWithdrawal( int withdrawal )
