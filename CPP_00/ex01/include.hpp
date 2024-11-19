@@ -1,7 +1,7 @@
 #ifndef INCLUDE_H
 #define INCLUDE_H
 
-#define LIST_SIZE 2
+#define LIST_SIZE 8
 
 #define RESET      "\033[0m"
 
