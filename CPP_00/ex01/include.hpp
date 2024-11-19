@@ -21,10 +21,10 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
-void		ClearScreen(std::string str = "", int lines = 2);
-void		print_retry();
-void		PrintOptions(std::string value = "", int LastOption = 0);
+void		clearScreen(std::string str = "", int lines = 2);
+void		printRetry();
+void		printOptions(std::string value = "", int LastOption = 0);
 std::string	toUpper(std::string option);
-bool		validate_option(std::string string);
+bool		validateOption(std::string string);
 
 #endif

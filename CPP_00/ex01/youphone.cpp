@@ -21,10 +21,10 @@ int	main(void)
 	std::string	NickName;
 	PhoneBook	phonebook;
 
-	ClearScreen();
+	clearScreen();
 	while (true)
 	{
-		PrintOptions("", LastOption);
+		printOptions("", LastOption);
 		if (!std::getline(std::cin, option))
 		{
 			option = "EXIT";
@@ -32,25 +32,25 @@ int	main(void)
 		option= toUpper(option);
 		if (option.compare("ADD") == 0)
 		{
-			ClearScreen();
-			PrintOptions("    Adding a contact", -1);
+			clearScreen();
+			printOptions("    Adding a contact", -1);
 			phonebook.AddContact();
 			LastOption = 1;
-			ClearScreen();
+			clearScreen();
 		}
 		else if (option.compare("SHOW") == 0)
 		{
-			ClearScreen();
-			PrintOptions("    Contacts List:", -1);
+			clearScreen();
+			printOptions("    Contacts List:", -1);
 			phonebook.ShowContacts();
 			std::cout << "    Press Enter to continue...";
 			std::cin.get();
-			ClearScreen();
+			clearScreen();
 		}
 		else if (option.compare("EXIT") == 0)
 		{
-			ClearScreen();
-			PrintOptions("", 4);
+			clearScreen();
+			printOptions("", 4);
 			std::cout <<
 			std::endl <<
 			std::endl;
@@ -58,7 +58,7 @@ int	main(void)
 		}
 		else
 		{
-			ClearScreen();
+			clearScreen();
 			LastOption = 3;
 		}
 	}
@@ -66,7 +66,7 @@ int	main(void)
 
 
 //utilitary functions
-void PrintOptions(std::string value, int LastOption)
+void printOptions(std::string value, int LastOption)
 {
 	std::string message;
 
@@ -106,7 +106,7 @@ void PrintOptions(std::string value, int LastOption)
 		<< message;
 }
 
-void ClearScreen(std::string str, int lines)
+void clearScreen(std::string str, int lines)
 {
 	std::cout << "\033[2J\033[1;1H"; //<-clean the screen
 	std::cout << str;
@@ -114,9 +114,9 @@ void ClearScreen(std::string str, int lines)
 		std::cout << std::endl;
 }
 
-void	print_retry()
+void	printRetry()
 {
-	ClearScreen();
+	clearScreen();
 	std::cout
 		<< RED "   Invalid Name," YELLOW "try again! " RESET <<
 	std::endl;
@@ -131,7 +131,7 @@ std::string toUpper(std::string option)
 	return (option);
 }
 
-bool	validate_option(std::string string)
+bool	validateOption(std::string string)
 {
 	for (int i = 0; string[i]; i++)
 	{
