@@ -166,6 +166,8 @@ bool	PhoneBook::SearchContact()
 				found = false;
 			}
 		}
+		if (!found)
+			std::cout << RED "             Contact not found" RESET << std::endl;
 		std::cout
 			<<
 			CYAN

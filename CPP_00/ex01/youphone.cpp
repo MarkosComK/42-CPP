@@ -70,7 +70,7 @@ int	main(void)
 		else
 		{
 			clearScreen();
-			LastOption = 1;
+			LastOption = 3;
 		}
 	}
 }
@@ -112,13 +112,17 @@ void printOptions(std::string value, int LastOption)
 			message = "   Type your choice → ";
 			break;
 	}
-	std::cout << "     Welcome to 90s digital phonebook  " << std::endl;
+	std::cout << "      Welcome to 90s digital phonebook  " << std::endl;
 	std::cout << GREEN;
 	std::cout << "   --------------------------------------" << std::endl;
-	std::cout << "  |  ADD    " << ":    save a new contact      |" << std::endl;
-	std::cout << "  |  SEARCH " << ": display a specific contact |" << std::endl;
-	std::cout << "  |  EXIT   " << ":     quit the program       |" << std::endl;
+	std::cout << "  |  ADD    " << ":    Save a new contact      |" << std::endl;
+	std::cout << "  |  SEARCH " << ": Display a specific contact |" << std::endl;
+	std::cout << "  |  EXIT   " << ":     Quit the program       |" << std::endl;
+	std::cout << BLUE;
 	std::cout << "   --------------------------------------" << std::endl;
+	std::cout << "  |  SHOW   " << ":       Why not?             |" << std::endl;
+	std::cout << "   --------------------------------------" << std::endl;
+	std::cout << GREEN;
 	std::cout << value << std::endl;
 	std::cout << RESET;
 	std::cout
