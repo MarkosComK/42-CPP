@@ -114,6 +114,14 @@ void ClearScreen(std::string str, int lines)
 		std::cout << std::endl;
 }
 
+void	print_retry()
+{
+	ClearScreen();
+	std::cout
+		<< RED "   Invalid Name," YELLOW "try again! " RESET <<
+	std::endl;
+}
+
 std::string toUpper(std::string option)
 {
 	for (int i = 0; option[i]; i++)
@@ -123,3 +131,14 @@ std::string toUpper(std::string option)
 	return (option);
 }
 
+bool	validate_option(std::string string)
+{
+	for (int i = 0; string[i]; i++)
+	{
+		if (!isalpha(string[i]))
+		{
+			return (false);
+		}
+	}
+	return (true);
+}
