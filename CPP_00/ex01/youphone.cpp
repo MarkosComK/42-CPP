@@ -12,6 +12,58 @@
 
 #include "include.hpp"
 
+int	main(void)
+{
+	int			LastOption = 0;
+	std::string	option;
+	std::string	FirstName;
+	std::string	LastName;
+	std::string	NickName;
+	PhoneBook	phonebook;
+
+	ClearScreen();
+	while (true)
+	{
+		PrintOptions("", LastOption);
+		std::cin >> option;
+		option= toUpper(option);
+		if (option.compare("ADD") == 0)
+		{
+			ClearScreen();
+			PrintOptions("    Adding a contact", -1);
+			phonebook.AddContact();
+			LastOption = 1;
+			ClearScreen();
+		}
+		else if (option.compare("SHOW") == 0)
+		{
+			ClearScreen();
+			PrintOptions("    Contacts List:", -1);
+			phonebook.ShowContacts();
+			std::cin.ignore();
+			std::cout << "    Press Enter to continue...";
+			std::cin.get();
+			ClearScreen();
+		}
+		else if (option.compare("EXIT") == 0)
+		{
+			ClearScreen();
+			PrintOptions("", 4);
+			std::cout <<
+				std::endl <<
+				std::endl;
+			break;
+		}
+		else
+		{
+			ClearScreen();
+			LastOption = 3;
+		}
+	}
+}
+
+
+//utilitary functions
 void PrintOptions(std::string value, int LastOption)
 {
 	std::string message;
@@ -69,53 +121,3 @@ std::string toUpper(std::string option)
 	return (option);
 }
 
-int	main(void)
-{
-	std::string	option;
-	int	LastOption = 0;
-	std::string	contact1 = "contact1";
-	std::string FirstName;
-	std::string LastName;
-	std::string NickName;
-	PhoneBook	phonebook;
-
-	ClearScreen();
-	while (true)
-	{
-		PrintOptions("", LastOption);
-		std::cin >> option;
-		option= toUpper(option);
-		if (option.compare("ADD") == 0)
-		{
-			ClearScreen();
-			PrintOptions("    Adding a contact", -1);
-			phonebook.AddContact();
-			LastOption = 1;
-			ClearScreen();
-		}
-		else if (option.compare("SHOW") == 0)
-		{
-			ClearScreen();
-			PrintOptions("    Contacts List:", -1);
-			phonebook.ShowContacts();
-			std::cin.ignore();
-			std::cout << "    Press Enter to continue...";
-			std::cin.get();
-			ClearScreen();
-		}
-		else if (option.compare("EXIT") == 0)
-		{
-			ClearScreen();
-			PrintOptions("", 4);
-			std::cout <<
-				std::endl <<
-				std::endl;
-			break;
-		}
-		else
-		{
-			ClearScreen();
-			LastOption = 3;
-		}
-	}
-}
