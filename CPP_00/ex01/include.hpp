@@ -21,6 +21,13 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
+enum
+{
+	FIRSTNAME,
+	LASTNAME,
+	NICKNAME,
+};
+
 void		clearScreen(std::string str = "", int lines = 2);
 void		printRetry();
 void		printOptions(std::string value = "", int LastOption = 0);

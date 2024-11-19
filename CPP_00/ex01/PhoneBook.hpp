@@ -14,6 +14,7 @@ class PhoneBook
 		}
 		void AddContact();
 		void ShowContacts();
+		bool SearchContact();
 };
 
 #endif

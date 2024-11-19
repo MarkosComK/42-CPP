@@ -38,13 +38,14 @@ int	main(void)
 			LastOption = 1;
 			clearScreen();
 		}
-		else if (option.compare("SHOW") == 0)
+		else if (option.compare("SEARCH") == 0)
 		{
 			clearScreen();
-			printOptions("    Contacts List:", -1);
-			phonebook.ShowContacts();
+			printOptions("    Search a contact by Index or Name ", -1);
+			phonebook.SearchContact();
 			std::cout << "    Press Enter to continue...";
 			std::cin.get();
+			LastOption = 5;
 			clearScreen();
 		}
 		else if (option.compare("EXIT") == 0)
@@ -56,10 +57,20 @@ int	main(void)
 			std::endl;
 			break;
 		}
+		else if (option.compare("SHOW") == 0)
+		{
+			clearScreen();
+			printOptions("    Contacts List:", -1);
+			phonebook.ShowContacts();
+			std::cout << "    Press Enter to continue...";
+			std::cin.get();
+			LastOption = 5;
+			clearScreen();
+		}
 		else
 		{
 			clearScreen();
-			LastOption = 3;
+			LastOption = 1;
 		}
 	}
 }
@@ -91,6 +102,14 @@ void printOptions(std::string value, int LastOption)
 			break;
 		case (4):
 			message = MAGENTA "               Bye, bye! 🥹" RESET;
+			break;
+		case (5):
+			value = "" RESET;
+			message = "   Type your choice → ";
+			break;
+		case (6):
+			value = RED "    Contact not in the list: " RESET;
+			message = "   Type your choice → ";
 			break;
 	}
 	std::cout << "     Welcome to 90s digital phonebook  " << std::endl;

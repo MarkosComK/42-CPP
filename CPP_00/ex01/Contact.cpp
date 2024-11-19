@@ -37,3 +37,15 @@ void Contact::ReduceIndex(int index)
 {
 	this->_Index = index;
 }
+
+std::string Contact::GetName(int value)
+{
+	if (value == FIRSTNAME)
+		return (this->_FirstName);
+	if (value == LASTNAME)
+		return (this->_LastName);
+	if (value == NICKNAME)
+		return (this->_NickName);
+	else
+		return ("Error");
+}
