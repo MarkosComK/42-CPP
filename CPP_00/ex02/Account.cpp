@@ -52,6 +52,7 @@ Account::Account( int initial_deposit )
 	Account::_nbWithdrawals = 0;
 
 	//[19920104_091532] index:0;amount:42;created
+	std::cout << "[19920104_091532] ";
 	std::cout << "index:" << _accountIndex << ";";
 	std::cout << "amount:" << _amount << ";";
 	std::cout << "created" << std::endl;
@@ -60,41 +61,68 @@ Account::Account( int initial_deposit )
 
 Account::~Account( void )
 {
-
+	//[19920104_091532] index:0;amount:47;closed
+	std::cout << "[19920104_091532] ";
+	std::cout << "index:" << _accountIndex << ";";
+	std::cout << "amount:" << _amount << ";";
+	std::cout << "closed" << std::endl;
 }
 //944567654 <- if you got here good luck
 //[19920104_091532] accounts:8;total:20049;deposits:0;withdrawals:0
 void	Account::displayAccountsInfos( void )
 {
-	std::cout << "accouts:" << Account::getNbAccounts() << ";";
+	std::cout << "[19920104_091532] ";
+	std::cout << "accounts:" << Account::getNbAccounts() << ";";
 	std::cout << "total:" << Account::getTotalAmount() << ";";
 	std::cout << "deposits:" << Account::getNbDeposits() << ";";
-	std::cout << "withdrawals:" << Account::getNbWithdrawals() << ";" << std::endl;
+	std::cout << "withdrawals:" << Account::getNbWithdrawals() << std::endl;
 }
 
 void	Account::makeDeposit( int deposit )
 {
-	int p_amount;
+	int p_amount = 0;
+	p_amount = _amount; // is not person_amount is PREVIOUS_amount omg
 	_amount = _amount + deposit;
-	p_amount = _amount;
 	_nbDeposits += 1;
 	_totalNbDeposits += 1;
 	_totalAmount += deposit;
-	std::cout << "index:" << this->_accountIndex << ";";
+	std::cout << "[19920104_091532] ";
+	std::cout << "index:" << _accountIndex << ";";
 	std::cout << "p_amount:" << p_amount << ";";
 	std::cout << "deposit:" << deposit << ";";
-	std::cout << "amount:" << this->_amount << ";";
-	std::cout << "nb_deposits:" << this->_nbDeposits << std::endl;
+	std::cout << "amount:" << _amount << ";";
+	std::cout << "nb_deposits:" << _nbDeposits << std::endl;
 }
 
 bool	Account::makeWithdrawal( int withdrawal )
 {
+	bool	flag = false;
+	int		p_amount = _amount;
 	if (withdrawal > _amount)
-		return (false);
-	_amount = _amount - withdrawal;
-	_nbWithdrawals += 1;
-	_totalNbWithdrawals += 1;
-	return (true);
+		flag = false;
+	else
+	{
+		p_amount = _amount;
+		_amount = _amount - withdrawal;
+		_totalAmount -= withdrawal;
+		_totalNbWithdrawals += 1;
+		_nbWithdrawals += 1;
+		flag = true;
+	}
+	//[19920104_091532] index:0;p_amount:47;withdrawal:refused
+	//[19920104_091532] index:1;p_amount:819;withdrawal:34;amount:785;nb_withdrawals:1
+	std::cout << "[19920104_091532] ";
+	std::cout << "index:" << _accountIndex << ";";
+	std::cout << "p_amount:" << p_amount << ";";
+	if (flag)
+	{
+		std::cout << "withdrawal:" << withdrawal << ";";
+		std::cout << "amount:" << _amount << ";";
+		std::cout << "nb_withdrawals:" << _nbWithdrawals<< std::endl;
+	}
+	else
+		std::cout << "withdrawal:refused" << std::endl;
+	return (flag);
 }
 
 int		Account::checkAmount( void ) const
@@ -105,8 +133,9 @@ int		Account::checkAmount( void ) const
 //[19920104_091532] index:0;amount:42;deposits:0;withdrawals:0
 void	Account::displayStatus( void ) const
 {
+	std::cout << "[19920104_091532] ";
 	std::cout << "index:" << _accountIndex << ";";
 	std::cout << "amount:" << _amount << ";";
 	std::cout << "deposits:" << _nbDeposits << ";";
-	std::cout << "withdrawals:" << _nbWithdrawals << ";" << std::endl;
+	std::cout << "withdrawals:" << _nbWithdrawals << std::endl;
 }
