@@ -84,7 +84,7 @@ void PrintOptions(std::string value, int LastOption)
 			message = "  in progress";
 			break;
 		case (3):
-			value = "    Invalid option, try again!" ;
+			value = RED "    Invalid option, try again!" RESET;
 			message = "   Type your choice → ";
 			break;
 		case (4):
