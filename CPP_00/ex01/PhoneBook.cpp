@@ -12,19 +12,19 @@ void PhoneBook::AddContact(void)
 	std::cout
 		<< "   Type the" YELLOW " first " RESET "name → ";
 	std::getline(std::cin, FirstName);
-	if (!validateOption(FirstName)) {printRetry(); AddContact(); }
+	if (!validateOption(FirstName)) {printRetry(); AddContact(); return ;}
 	clearScreen();
 	printOptions("    Adding a contact", -1);
 	std::cout
-		<< "   Type the last name → ";
+		<< "   Type the" YELLOW " last " RESET "name → ";
 	std::getline(std::cin, LastName);
-	if (!validateOption(FirstName)) {printRetry(); AddContact(); }
+	if (!validateOption(LastName)) {printRetry(); AddContact(); return ;}
 	clearScreen();
 	printOptions("    Adding a contact", -1);
 	std::cout
-		<< "   Chose the nick name → ";
+		<< "   Chose the" YELLOW " nick " RESET "name → ";
 	std::getline(std::cin, NickName);
-	if (!validateOption(FirstName)) {printRetry(); AddContact(); }
+	if (!validateOption(NickName)) {printRetry(); AddContact(); return ;}
 	if (index < LIST_SIZE)
 		_contacts[index] = Contact(index, FirstName, LastName, NickName);
 	else

@@ -136,8 +136,9 @@ void clearScreen(std::string str, int lines)
 void	printRetry()
 {
 	clearScreen();
+	printOptions("", -1);
 	std::cout
-		<< RED "   Invalid Name," YELLOW "try again! " RESET <<
+		<< RED "   Invalid Name, " YELLOW "try again! " RESET <<
 	std::endl;
 }
 
@@ -152,6 +153,8 @@ std::string toUpper(std::string option)
 
 bool	validateOption(std::string string)
 {
+	if (string.empty())
+		return (false);
 	for (int i = 0; string[i]; i++)
 	{
 		if (!isalpha(string[i]))
