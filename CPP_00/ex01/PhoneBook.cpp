@@ -20,7 +20,7 @@ void PhoneBook::AddContact(void)
 	std::cout
 		<< "   Chose the nick name → ";
 	std::cin >> NickName;
-	if (index < 2)
+	if (index < LIST_SIZE)
 		_contacts[index] = Contact(index, FirstName, LastName, NickName);
 	else
 	{
