@@ -29,7 +29,7 @@ int	main(void)
 		{
 			option = "EXIT";
 		}
-		option= toUpper(option);
+		option = toUpper(option);
 		if (option.compare("ADD") == 0)
 		{
 			clearScreen();

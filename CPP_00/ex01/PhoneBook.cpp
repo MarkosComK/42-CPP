@@ -5,39 +5,64 @@ bool	validate_option(std::string string);
 void PhoneBook::AddContact(void)
 {
 	static int index = 0;
-	std::string FirstName;
-	std::string LastName;
-	std::string NickName;
+	std::string FirstName, LastName, NickName;
 
-	std::cout
-		<< "   Type the" YELLOW " first " RESET "name → ";
-	std::getline(std::cin, FirstName);
-	if (!validateOption(FirstName)) {printRetry(); AddContact(); return ;}
+	while (true)
+	{
+		std::cout << "   Type the" YELLOW " first " RESET "name → ";
+		if (!std::getline(std::cin, FirstName))
+			return ;
+		if (validateOption(FirstName))
+			break;
+		printRetry();
+	}
+	if (FirstName.length() > 10)
+		FirstName = FirstName.substr(0, 9) + ".";
+
 	clearScreen();
 	printOptions("    Adding a contact", -1);
-	std::cout
-		<< "   Type the" YELLOW " last " RESET "name → ";
-	std::getline(std::cin, LastName);
-	if (!validateOption(LastName)) {printRetry(); AddContact(); return ;}
+
+	// Input loop for last name
+	while (true)
+	{
+		std::cout << "   Type the" YELLOW " last " RESET "name → ";
+		if (!std::getline(std::cin, LastName))
+			return;
+		if (validateOption(LastName))
+			break;
+		printRetry();
+	}
+	if (LastName.length() > 10)
+		LastName = LastName.substr(0, 9) + ".";
+
 	clearScreen();
 	printOptions("    Adding a contact", -1);
-	std::cout
-		<< "   Chose the" YELLOW " nick " RESET "name → ";
-	std::getline(std::cin, NickName);
-	if (!validateOption(NickName)) {printRetry(); AddContact(); return ;}
+
+	// Input loop for nick name
+	while (true)
+	{
+		std::cout << "   Choose the" YELLOW " nick " RESET "name → ";
+		if (!std::getline(std::cin, NickName))
+			return;
+		if (validateOption(NickName))
+			break;
+		printRetry();
+	}
+	if (NickName.length() > 10)
+		NickName = NickName.substr(0, 9) + ".";
+
 	if (index < LIST_SIZE)
+	{
 		_contacts[index] = Contact(index, FirstName, LastName, NickName);
+	}
 	else
 	{
-		int i = 0;
-		_contacts[0] = Contact();
-		for (i = 0; i < LIST_SIZE; i++)
+		for (int i = 0; i < LIST_SIZE - 1; i++)
 		{
-			_contacts[i + 1].ReduceIndex(i);
-			_contacts[i] = _contacts[i + 1];
+			_contacts[i] = _contacts[i + 1]; // Shift contacts left
+			_contacts[i].ReduceIndex(i);   // Update indices
 		}
-		i--;
-		_contacts[i] = Contact(i, FirstName, LastName, NickName);
+		_contacts[LIST_SIZE - 1] = Contact(LIST_SIZE - 1, FirstName, LastName, NickName);
 	}
 	index++;
 }
