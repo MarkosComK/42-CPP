@@ -2,5 +2,7 @@ NAME = teste
 FLAGS = -Wall -Wextra -Werror
 SRCS = main.cpp
 
-all:
+all: ${NAME}
+
+${NAME}:
 	c++ ${FLAGS} ${SRCS} -o ${NAME}
