@@ -67,7 +67,7 @@ void PhoneBook::AddContact(void)
 	// Input loop for phone number
 	while (true)
 	{
-		std::cout << "   Type the" YELLOW " Dark " RESET "secret → ";
+		std::cout << "   Type the" YELLOW " Dark " RESET "→ ";
 		if (!std::getline(std::cin, DarkSecret))
 			return;
 		if (validateOption(DarkSecret))
@@ -141,9 +141,8 @@ bool	PhoneBook::SearchContact()
 			<< std::endl
 			<<
 			RESET
-			<< "   index|first-name|last--name|nick--name"
 			<< std::endl;
-		if (!_contacts[digit].PrintContact(digit))
+		if (!_contacts[digit].PrintContactInfo(digit))
 			std::cout << RED "             Contact not found" RESET << std::endl;
 		std::cout
 			<<

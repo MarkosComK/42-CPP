@@ -43,6 +43,47 @@ bool Contact::PrintContact(int index)
 	return (found);
 }
 
+bool Contact::PrintContactInfo(int index)
+{
+	bool	found = false;
+
+	if (this->_FirstName.compare("") != 0)
+	{
+		std::cout << GREEN << "    Index: " << RESET << index << std::endl;
+		found = true;
+	}
+	if (this->_FirstName.compare("") != 0)
+	{
+		std::cout << GREEN << "    First name: " << RESET  << this->_FirstName << std::endl;
+		found = true;
+	}
+	if (this->_LastName.compare("") != 0)
+	{
+		std::cout << GREEN << "    Last name: " << RESET  << this->_LastName << std::endl;
+		found = true;
+	}
+	if (this->_NickName.compare("") != 0)
+	{
+		std::cout << GREEN << "    Nick name: " << RESET  << this->_NickName << std::endl;
+		found = true;
+	}
+	if (this->_PhoneNumber.compare("") != 0)
+	{
+		std::cout << GREEN << "    Phone number: " << RESET  << this->_PhoneNumber << std::endl;
+		found = true;
+	}
+	if (this->_DarkSecret.compare("") != 0)
+	{
+		std::cout << GREEN << "    Dark Secret: " << RESET  << this->_DarkSecret
+			<< std::endl
+			<< std::endl;
+		found = true;
+	}
+	else
+		found = false;
+	return (found);
+}
+
 void Contact::ReduceIndex(int index)
 {
 	this->_Index = index;
