@@ -5,7 +5,7 @@ bool	validate_option(std::string string);
 void PhoneBook::AddContact(void)
 {
 	static int index = 0;
-	std::string FirstName, LastName, NickName;
+	std::string FirstName, LastName, NickName, PhoneNumber, DarkSecret;
 
 	while (true)
 	{
@@ -51,9 +51,35 @@ void PhoneBook::AddContact(void)
 	if (NickName.length() > 10)
 		NickName = NickName.substr(0, 9) + ".";
 
+	// Input loop for phone number
+	while (true)
+	{
+		std::cout << "   Type the" YELLOW " Phone " RESET "number → ";
+		if (!std::getline(std::cin, PhoneNumber))
+			return;
+		if (validateNumber(PhoneNumber))
+			break;
+		printRetry();
+	}
+	if (LastName.length() > 10)
+		LastName = LastName.substr(0, 9) + ".";
+
+	// Input loop for phone number
+	while (true)
+	{
+		std::cout << "   Type the" YELLOW " Dark " RESET "secret → ";
+		if (!std::getline(std::cin, DarkSecret))
+			return;
+		if (validateOption(DarkSecret))
+			break;
+		printRetry();
+	}
+	if (LastName.length() > 10)
+		LastName = LastName.substr(0, 9) + ".";
+
 	if (index < LIST_SIZE)
 	{
-		_contacts[index] = Contact(index, FirstName, LastName, NickName);
+		_contacts[index] = Contact(index, FirstName, LastName, NickName, PhoneNumber, DarkSecret);
 	}
 	else
 	{
@@ -62,7 +88,7 @@ void PhoneBook::AddContact(void)
 			_contacts[i] = _contacts[i + 1]; // Shift contacts left
 			_contacts[i].ReduceIndex(i);   // Update indices
 		}
-		_contacts[LIST_SIZE - 1] = Contact(LIST_SIZE - 1, FirstName, LastName, NickName);
+		_contacts[LIST_SIZE - 1] = Contact(LIST_SIZE - 1, FirstName, LastName, NickName, PhoneNumber, DarkSecret);
 	}
 	index++;
 }

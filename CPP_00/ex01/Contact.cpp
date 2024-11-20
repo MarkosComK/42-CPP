@@ -1,11 +1,13 @@
 #include "include.hpp"
 
-Contact::Contact(int Index, std::string FName, std::string LName, std::string NName)
+Contact::Contact(int Index, std::string FName, std::string LName, std::string NName, std::string PNumber, std::string DSecret)
 {
 	this->_Index = Index;
 	this->_FirstName = FName;
 	this->_LastName = LName;
 	this->_NickName = NName;
+	this->_PhoneNumber = PNumber;
+	this->_DarkSecret = DSecret;
 }
 
 bool Contact::PrintContact(int index)

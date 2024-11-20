@@ -42,6 +42,7 @@ int	main(void)
 		{
 			clearScreen();
 			printOptions("    Search a contact by Index or Name ", -1);
+			phonebook.ShowContacts();
 			phonebook.SearchContact();
 			std::cout << "    Press Enter to continue...";
 			std::cin.get();
@@ -56,16 +57,6 @@ int	main(void)
 			std::endl <<
 			std::endl;
 			break;
-		}
-		else if (option.compare("SHOW") == 0)
-		{
-			clearScreen();
-			printOptions("    Contacts List:", -1);
-			phonebook.ShowContacts();
-			std::cout << "    Press Enter to continue...";
-			std::cin.get();
-			LastOption = 5;
-			clearScreen();
 		}
 		else
 		{
@@ -118,9 +109,6 @@ void printOptions(std::string value, int LastOption)
 	std::cout << "  |  ADD    " << ":    Save a new contact      |" << std::endl;
 	std::cout << "  |  SEARCH " << ": Display a specific contact |" << std::endl;
 	std::cout << "  |  EXIT   " << ":     Quit the program       |" << std::endl;
-	std::cout << BLUE;
-	std::cout << "   --------------------------------------" << std::endl;
-	std::cout << "  |  SHOW   " << ":       Why not?             |" << std::endl;
 	std::cout << "   --------------------------------------" << std::endl;
 	std::cout << GREEN;
 	std::cout << value << std::endl;
@@ -162,6 +150,20 @@ bool	validateOption(std::string string)
 	for (int i = 0; string[i]; i++)
 	{
 		if (!isalpha(string[i]))
+		{
+			return (false);
+		}
+	}
+	return (true);
+}
+
+bool	validateNumber(std::string string)
+{
+	if (string.empty())
+		return (false);
+	for (int i = 0; string[i]; i++)
+	{
+		if (!isdigit(string[i]))
 		{
 			return (false);
 		}

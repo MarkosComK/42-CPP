@@ -33,5 +33,6 @@ void		printRetry();
 void		printOptions(std::string value = "", int LastOption = 0);
 std::string	toUpper(std::string option);
 bool		validateOption(std::string string);
+bool		validateNumber(std::string string);
 
 #endif
