@@ -12,7 +12,8 @@ Contact::Contact(int Index, std::string FName, std::string LName, std::string NN
 
 bool Contact::PrintContact(int index)
 {
-	bool	found = false;
+	bool		found = false;
+	std::string	trunc;
 
 	if (this->_FirstName.compare("") != 0)
 	{
@@ -23,19 +24,28 @@ bool Contact::PrintContact(int index)
 	}
 	if (this->_FirstName.compare("") != 0)
 	{
-		std::cout << std::setw(10) << this->_FirstName;
+		if (_FirstName.length() > 10)
+			std::cout << std::setw(10) << this->_FirstName.substr(0, 9) + ".";
+		else
+			std::cout << std::setw(10) << this->_FirstName;
 		std::cout << "|";
 		found = true;
 	}
 	if (this->_LastName.compare("") != 0)
 	{
-		std::cout << std::setw(10) << this->_LastName;
+		if (_LastName.length() > 10)
+			std::cout << std::setw(10) << this->_LastName.substr(0, 9) + ".";
+		else
+			std::cout << std::setw(10) << this->_LastName;
 		std::cout << "|";
 		found = true;
 	}
 	if (this->_NickName.compare("") != 0)
 	{
-		std::cout << std::setw(10) << this->_NickName << std::endl;
+		if (_NickName.length() > 10)
+			std::cout << std::setw(10) << this->_NickName.substr(0, 9) + ".";
+		else
+			std::cout << std::setw(10) << this->_NickName;
 		found = true;
 	}
 	else
@@ -49,22 +59,22 @@ bool Contact::PrintContactInfo(int index)
 
 	if (this->_FirstName.compare("") != 0)
 	{
-		std::cout << GREEN << "    Index: " << RESET << index << std::endl;
+		std::cout << GREEN << "    Index:        " << RESET << index << std::endl;
 		found = true;
 	}
 	if (this->_FirstName.compare("") != 0)
 	{
-		std::cout << GREEN << "    First name: " << RESET  << this->_FirstName << std::endl;
+		std::cout << GREEN << "    First name:   " << RESET  << this->_FirstName << std::endl;
 		found = true;
 	}
 	if (this->_LastName.compare("") != 0)
 	{
-		std::cout << GREEN << "    Last name: " << RESET  << this->_LastName << std::endl;
+		std::cout << GREEN << "    Last name:    " << RESET  << this->_LastName << std::endl;
 		found = true;
 	}
 	if (this->_NickName.compare("") != 0)
 	{
-		std::cout << GREEN << "    Nick name: " << RESET  << this->_NickName << std::endl;
+		std::cout << GREEN << "    Nick name:    " << RESET  << this->_NickName << std::endl;
 		found = true;
 	}
 	if (this->_PhoneNumber.compare("") != 0)
@@ -74,7 +84,7 @@ bool Contact::PrintContactInfo(int index)
 	}
 	if (this->_DarkSecret.compare("") != 0)
 	{
-		std::cout << GREEN << "    Dark Secret: " << RESET  << this->_DarkSecret
+		std::cout << GREEN << "    Dark Secret:  " << RESET  << this->_DarkSecret
 			<< std::endl
 			<< std::endl;
 		found = true;

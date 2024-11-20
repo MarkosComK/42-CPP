@@ -16,8 +16,6 @@ void PhoneBook::AddContact(void)
 			break;
 		printRetry();
 	}
-	if (FirstName.length() > 10)
-		FirstName = FirstName.substr(0, 9) + ".";
 
 	clearScreen();
 	printOptions("    Adding a contact", -1);
@@ -32,8 +30,6 @@ void PhoneBook::AddContact(void)
 			break;
 		printRetry();
 	}
-	if (LastName.length() > 10)
-		LastName = LastName.substr(0, 9) + ".";
 
 	clearScreen();
 	printOptions("    Adding a contact", -1);
@@ -48,8 +44,9 @@ void PhoneBook::AddContact(void)
 			break;
 		printRetry();
 	}
-	if (NickName.length() > 10)
-		NickName = NickName.substr(0, 9) + ".";
+
+	clearScreen();
+	printOptions("    Adding a contact", -1);
 
 	// Input loop for phone number
 	while (true)
@@ -58,11 +55,15 @@ void PhoneBook::AddContact(void)
 		if (!std::getline(std::cin, PhoneNumber))
 			return;
 		if (validateNumber(PhoneNumber))
+		{
+			std::cout << "Phone must contain 9 numbers" << std::endl;
 			break;
+		}
 		printRetry();
 	}
-	if (LastName.length() > 10)
-		LastName = LastName.substr(0, 9) + ".";
+
+	clearScreen();
+	printOptions("    Adding a contact", -1);
 
 	// Input loop for phone number
 	while (true)
@@ -76,6 +77,9 @@ void PhoneBook::AddContact(void)
 	}
 	if (LastName.length() > 10)
 		LastName = LastName.substr(0, 9) + ".";
+
+	clearScreen();
+	printOptions("    Adding a contact", -1);
 
 	if (index < LIST_SIZE)
 	{
@@ -107,6 +111,7 @@ void PhoneBook::ShowContacts()
 	for (int i = 0; i < LIST_SIZE; i++)
 	{
 		_contacts[i].PrintContact(i);
+		std::cout << std::endl;
 	}
 	std::cout
 		<<
@@ -143,7 +148,9 @@ bool	PhoneBook::SearchContact()
 			RESET
 			<< std::endl;
 		if (!_contacts[digit].PrintContactInfo(digit))
-			std::cout << RED "             Contact not found" RESET << std::endl;
+			std::cout << RED "             Contact not found" RESET
+				<< std::endl
+				<< std::endl;
 		std::cout
 			<<
 			CYAN
@@ -156,6 +163,7 @@ bool	PhoneBook::SearchContact()
 	}
 	else
 	{
+		int	founds = 0;
 		clearScreen();
 		printOptions("    Found: ", -1);
 		std::cout << std::endl;
@@ -187,13 +195,15 @@ bool	PhoneBook::SearchContact()
 			}
 			if (found)
 			{
+				founds++;
 				_contacts[i].PrintContact(i);
 				found = false;
 			}
 		}
-		if (!found)
-			std::cout << RED "             Contact not found" RESET << std::endl;
+		if (founds == 0)
+			std::cout << RED "             Contact not found" RESET;
 		std::cout
+			<< std::endl
 			<<
 			CYAN
 			<< "   --------------------------------------"

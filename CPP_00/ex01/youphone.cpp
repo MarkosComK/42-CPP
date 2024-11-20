@@ -159,7 +159,7 @@ bool	validateOption(std::string string)
 
 bool	validateNumber(std::string string)
 {
-	if (string.empty())
+	if (string.empty() || string.length() != 9)
 		return (false);
 	for (int i = 0; string[i]; i++)
 	{
