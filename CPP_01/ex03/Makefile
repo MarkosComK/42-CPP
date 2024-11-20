@@ -1,6 +1,8 @@
 NAME = violence
 FLAGS = -Wall -Wextra -Werror
-SRCS = main.cpp Weapon.cpp HumanA.cpp
+SRCS = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 
-all:
+all: ${NAME}
+
+${NAME}:
 	c++ ${FLAGS} ${SRCS} -o ${NAME}

@@ -5,7 +5,12 @@ Weapon::Weapon(std::string type)
 	_type = type;
 }
 
-std::string	Weapon::getType(void) const
+Weapon::~Weapon()
+{
+	std::cout << BLACK << _type << " has gone!" << RESET << std::endl;
+}
+
+const std::string	&Weapon::getType(void) const
 {
 	return (_type);
 }
