@@ -32,8 +32,14 @@ int	main(int argc, char **argv)
 		int	i;
 		std::cout << teste << std::endl;
 		i = compare(teste, s1[0]);
-		if (i != -1)
+		if (i > 0)
+		{
+			compare = teste.substr(i, ); // get the subs with the len to compare.
+										 // if match we write the s2 instead them jump the i
+										 // to keep going at the end looking for more matches
+										 // and its done!
 			std::cout << "find bruh at: " << i << std::endl;
+		}
 	}
 	std::ofstream output("output.txt");
 	std::cout << filename << std::endl;
