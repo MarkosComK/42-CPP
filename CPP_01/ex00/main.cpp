@@ -1,7 +1,9 @@
-#include "Zombie.hpp"
+#include "newZombie.hpp"
 
 int	main(void)
 {
-	Zombie *zombie = new Zombie("foo");
-	zombie->Test();
+	Zombie *zombie = newZombie("foo");
+	zombie->announce();
+	randomChump("bar"); // <- this one anounce himself and dies instantly
+	delete zombie;
 }
