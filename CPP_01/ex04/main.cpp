@@ -33,6 +33,7 @@ int	main(int argc, char **argv)
 	std::string subs;
 	std::ifstream input(filename.c_str());
 	std::ofstream output("output.txt");
+	bool flag = 1;
 	while (std::getline(input, teste))
 	{
 		std::cout << teste << std::endl;
@@ -43,13 +44,18 @@ int	main(int argc, char **argv)
 				subs = teste.substr(i, s1.length());
 				if (subs.compare(s1) == 0)
 				{
-					output << subs;
-					i = s1.length();
+					output << s2;
+					i += subs.length() - 1;
+					flag = 0;
 				}
 			}
-			output << teste[i];
-			if (teste[i + 1] == '\0')
-				output << std::endl;
+			if (flag)
+			{
+				output << teste[i];
+				if (teste[i + 1] == '\0')
+					output << std::endl;
+			}
+			flag = 1;
 		}
 	}
 	std::cout << filename << std::endl;
