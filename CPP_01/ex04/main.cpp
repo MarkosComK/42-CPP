@@ -6,7 +6,7 @@
 //It will open the file <filename> and copies its content into a new file
 //<filename>.replace, replacing every occurrence of s1 with s2.
 //
-int	compare(std::string str, char c)
+int	compare(std::string str, char c, std::ofstream& outfile)
 {
 	for (int i = 0; str[i]; i++)
 	{
@@ -14,9 +14,13 @@ int	compare(std::string str, char c)
 		{
 			return (i);
 		}
+		outfile << str[i];
+		if (str[i + 1] == '\0')
+			outfile << std::endl;
 	}
 	return (-1);
 }
+
 int	main(int argc, char **argv)
 {
 	if (argc != 4)
@@ -26,22 +30,28 @@ int	main(int argc, char **argv)
 	std::string	s2 = argv[3];
 
 	std::string teste;
+	std::string subs;
 	std::ifstream input(filename.c_str());
+	std::ofstream output("output.txt");
 	while (std::getline(input, teste))
 	{
-		int	i;
 		std::cout << teste << std::endl;
-		i = compare(teste, s1[0]);
-		if (i > 0)
+		for (int i = 0; teste[i]; i++)
 		{
-			compare = teste.substr(i, ); // get the subs with the len to compare.
-										 // if match we write the s2 instead them jump the i
-										 // to keep going at the end looking for more matches
-										 // and its done!
-			std::cout << "find bruh at: " << i << std::endl;
+			if (teste[i] == s1[0])
+			{
+				subs = teste.substr(i, s1.length());
+				if (subs.compare(s1) == 0)
+				{
+					output << subs;
+					i = s1.length();
+				}
+			}
+			output << teste[i];
+			if (teste[i + 1] == '\0')
+				output << std::endl;
 		}
 	}
-	std::ofstream output("output.txt");
 	std::cout << filename << std::endl;
 	std::cout << s1 << std::endl;
 	std::cout << s2 << std::endl;
