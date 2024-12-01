@@ -32,11 +32,12 @@ int	main(int argc, char **argv)
 	std::string teste;
 	std::string subs;
 	std::ifstream input(filename.c_str());
-	std::ofstream output("output.txt");
+	std::string outfile = filename + ".replace";
+	std::cout << outfile << std::endl;
+	std::ofstream output(outfile.c_str());
 	bool flag = 1;
 	while (std::getline(input, teste))
 	{
-		std::cout << teste << std::endl;
 		for (int i = 0; teste[i]; i++)
 		{
 			if (teste[i] == s1[0])
@@ -58,7 +59,4 @@ int	main(int argc, char **argv)
 			flag = 1;
 		}
 	}
-	std::cout << filename << std::endl;
-	std::cout << s1 << std::endl;
-	std::cout << s2 << std::endl;
 }

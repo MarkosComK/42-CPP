@@ -1,0 +1,4 @@
+NAME = replace
+FLAGS = -Wall -Wextra -Werror -std=thisIsATestBruhSRCS = main.cpp
+all:
+	c++ ${FLAGS} ${SRCS} -o ${NAME}
