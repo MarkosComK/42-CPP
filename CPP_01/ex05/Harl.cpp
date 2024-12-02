@@ -47,18 +47,6 @@ Harl::~Harl()
 	//destructor
 }
 
-Harl	&Harl::operator=(const Harl &src) {
-	if (this != &src)
-	{
-		for (int i = 0; i < 4; i++)
-		{
-		   this->levels[i] = src.levels[i];
-		   this->f[i] = src.f[i];
-		}
-	}
-	return *this;
-}
-
 void	Harl::complain( std::string level )
 {
 	for (int i = 0; i < 4; i++)

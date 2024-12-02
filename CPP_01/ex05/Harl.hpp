@@ -26,8 +26,6 @@ class Harl
 
 	public:
 		Harl(); //def constructor
-		Harl(const Harl &src); //copy constructor
-		Harl	&operator=(const Harl &src); //assignment operatro
 		~Harl(); //def destructor
 		void	complain( std::string level );
 };
