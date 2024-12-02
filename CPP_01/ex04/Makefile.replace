@@ -1,4 +1,5 @@
-NAME = replace
-FLAGS = -Wall -Wextra -Werror -std=thisIsATestBruhSRCS = main.cpp
+cadabra = replace
+FLAGS = -Wall -Wextra -Werror -std=c++98
+SRCS = main.cpp
 all:
-	c++ ${FLAGS} ${SRCS} -o ${NAME}
+	c++ ${FLAGS} ${SRCS} -o ${cadabra}
