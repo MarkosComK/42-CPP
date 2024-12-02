@@ -1,6 +1,6 @@
 NAME = horde
-SRCS = main.cpp Zombie.cpp
-FLAGS = -Wall -Wextra -Werror
+SRCS = main.cpp Zombie.cpp zombieHorde.cpp
+FLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: ${NAME}
 
