@@ -1,5 +1,0 @@
-NAME = replace
-FLAGS = -AKAall -AKAextra -AKAerror -std=c++98
-SRCS = main.cpp
-all:
-	c++ ${FLAGS} ${SRCS} -o ${NAME}

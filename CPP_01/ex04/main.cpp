@@ -25,24 +25,27 @@ int	main(int argc, char **argv)
 {
 	if (argc != 4)
 		return (std::cout << "Invalid Parameters" << std::endl, 0);
-	std::string	filename = argv[1];
-	std::string	s1 = argv[2];
-	std::string	s2 = argv[3];
-
-	std::string teste;
-	std::string subs;
-	std::ifstream input(filename.c_str());
-	std::string outfile = filename + ".replace";
-	std::cout << outfile << std::endl;
-	std::ofstream output(outfile.c_str());
-	bool flag = 1;
-	while (std::getline(input, teste))
+	std::string		filename = argv[1];
+	std::string		s1 = argv[2];
+	std::string		s2 = argv[3];
+	std::string		line;
+	std::string		subs;
+	std::ifstream	input(filename.c_str());
+	std::string		outfile = filename + ".replace";
+	std::ofstream	output(outfile.c_str());
+	bool			flag = 1;
+	while (std::getline(input, line))
 	{
-		for (int i = 0; teste[i]; i++)
+		if (line.empty())
 		{
-			if (teste[i] == s1[0])
+			output << std::endl;
+			continue;
+		}
+		for (int i = 0; line[i]; i++)
+		{
+			if (line[i] == s1[0])
 			{
-				subs = teste.substr(i, s1.length());
+				subs = line.substr(i, s1.length());
 				if (subs.compare(s1) == 0)
 				{
 					output << s2;
@@ -52,8 +55,8 @@ int	main(int argc, char **argv)
 			}
 			if (flag)
 			{
-				output << teste[i];
-				if (teste[i + 1] == '\0')
+				output << line[i];
+				if (line[i + 1] == '\0' || line[i] == '\n')
 					output << std::endl;
 			}
 			flag = 1;
