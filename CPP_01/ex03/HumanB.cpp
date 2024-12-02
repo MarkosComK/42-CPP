@@ -7,12 +7,15 @@ HumanB::HumanB(std::string name) : _name(name)
 
 HumanB::~HumanB()
 {
-	std::cout << BLACK << _name << " has gone!" << RESET << std::endl;
+	std::cout << RED << _name << " has gone!" << RESET << std::endl;
 }
 
 void	HumanB::attack(void)
 {
-	std::cout << _name << " attacks with their " BLUE << _weapon->getType() << RESET << std::endl;
+	if (_weapon == NULL)
+		std::cout << _name << " attacks with their " BLUE << "hands" << RESET << std::endl;
+	else
+		std::cout << _name << " attacks with their " BLUE << _weapon->getType() << RESET << std::endl;
 }
 
 void	HumanB::setWeapon(Weapon &weapon)
