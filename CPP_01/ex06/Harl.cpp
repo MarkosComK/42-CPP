@@ -23,13 +23,10 @@ void	Harl::filter(std::string level)
 	{
 		case (0):
 			printLevel("DEBUG", 0);
-			break;
 		case (1):
 			printLevel("INFO", 1);
-			break;
 		case (2):
 			printLevel("WARNING", 2);
-			break;
 		case (3):
 			printLevel("ERROR", 3);
 			break;
