@@ -1,4 +1,4 @@
-#include "zombieHorde.hpp"
+#include "newZombie.hpp"
 
 int	main(void)
 {
