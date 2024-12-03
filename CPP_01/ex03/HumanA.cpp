@@ -7,7 +7,7 @@ HumanA::HumanA(std::string name, Weapon &weapon) : _name(name), _weapon(weapon)
 
 HumanA::~HumanA()
 {
-	std::cout << BLACK << _name << " has gone!" << RESET << std::endl;
+	std::cout << RED << _name << " has gone!" << RESET << std::endl;
 }
 
 void	HumanA::attack(void)

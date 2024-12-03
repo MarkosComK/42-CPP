@@ -7,7 +7,7 @@ Weapon::Weapon(std::string type)
 
 Weapon::~Weapon()
 {
-	std::cout << BLACK << _type << " has gone!" << RESET << std::endl;
+	std::cout << GREEN << _type << " has gone!" << RESET << std::endl;
 }
 
 const std::string	&Weapon::getType(void) const

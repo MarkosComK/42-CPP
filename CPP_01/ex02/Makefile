@@ -1,5 +1,5 @@
 NAME = teste
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -std=c++98
 SRCS = main.cpp
 
 all: ${NAME}
@@ -11,4 +11,3 @@ clean:
 	rm ${NAME}
 
 re: clean all
-	c++ ${FLAGS} ${SRCS} -o ${NAME}

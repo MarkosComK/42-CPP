@@ -39,21 +39,22 @@ void	Harl::filter(std::string level)
 void	Harl::debug( void )
 {
 	std::cout <<
-	"love having extra bacon for my 7XL-double-cheese-triple-pickle-speciaketchup burger. I really do!"
+	"I love having extra bacon for my 7XL-double-cheese-triple-pickle-speciaketchup burger. I really do!"
 	<< std::endl;
 }
 
 void	Harl::info( void )
 {
 	std::cout <<
-	"cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!"
+	"I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!"
 	<< std::endl;
 }
 
 void	Harl::warning( void )
 {
 	std::cout <<
-	"think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month."
+	"I think I deserve to have some extra bacon for free. " << std::endl <<
+	"I’ve been coming for years whereas you started working here since last month."
 	<< std::endl;
 }
 
