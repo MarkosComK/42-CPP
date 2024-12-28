@@ -92,3 +92,13 @@ Fixed Fixed::operator++()
 	this->_fixedPoint++;
 	return (*this);
 }
+
+Fixed Fixed::operator*()
+{
+
+}
+
+Fixed Fixed::operator*(int)
+{
+
+}
