@@ -98,6 +98,19 @@ Fixed Fixed::operator++()
 	return (*this);
 }
 
+Fixed Fixed::operator--(int)
+{
+	Fixed temp(*this);
+	this->_fixedPoint--;
+	return (temp);
+}
+
+Fixed Fixed::operator--()
+{
+	this->_fixedPoint--;
+	return (*this);
+}
+
 Fixed Fixed::operator*(const Fixed& rhs)
 {
 	Fixed tmp;

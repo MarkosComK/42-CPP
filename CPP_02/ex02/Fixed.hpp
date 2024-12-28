@@ -34,6 +34,8 @@ class Fixed
 		Fixed operator-(const Fixed& rhs);
 		Fixed operator++();
 		Fixed operator++(int);
+		Fixed operator--();
+		Fixed operator--(int);
 		Fixed operator*(const Fixed& rhs);
 
 		static Fixed& min(Fixed& a, Fixed& b);
