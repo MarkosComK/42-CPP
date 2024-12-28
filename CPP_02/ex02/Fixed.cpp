@@ -93,12 +93,10 @@ Fixed Fixed::operator++()
 	return (*this);
 }
 
-Fixed Fixed::operator*()
+Fixed Fixed::operator*(Fixed const& rhs)
 {
-
-}
-
-Fixed Fixed::operator*(int)
-{
-
+	Fixed tmp;
+	int value = (this->_fixedPoint * rhs._fixedPoint / (1 << _fractionalBits));
+	tmp.setRawBits(value);
+	return (tmp);
 }
