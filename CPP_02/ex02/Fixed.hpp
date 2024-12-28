@@ -28,12 +28,18 @@ class Fixed
 		int toInt(void) const;
 
 		//operators
-		Fixed operator>(Fixed const& Fixed);
-		Fixed operator+(Fixed const& rhs);
-		Fixed operator-(Fixed const& rhs);
+		bool operator>(const Fixed& rhs) const;
+		bool operator<(const Fixed& rhs) const;
+		Fixed operator+(const Fixed& rhs);
+		Fixed operator-(const Fixed& rhs);
 		Fixed operator++();
 		Fixed operator++(int);
-		Fixed operator*(Fixed const& rhs);
+		Fixed operator*(const Fixed& rhs);
+
+		static Fixed& min(Fixed& a, Fixed& b);
+		static Fixed& max(Fixed& a, Fixed& b);
+		static Fixed& min(const Fixed& a, const Fixed& b);
+		static Fixed& max(const Fixed& a, const Fixed& b);
 };
 
 std::ostream    &operator<<(std::ostream &out, Fixed const &fixed);
