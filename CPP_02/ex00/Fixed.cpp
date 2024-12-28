@@ -11,12 +11,14 @@ void	Fixed::setRawBits(int const raw)
 {
 	this->_point = raw;
 }
+
 //Orthodox Canonical Form
 //Default constructor
 Fixed::Fixed(void): _point(0)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
+
 //Copy constructor
 Fixed::Fixed(const Fixed& src)
 {
