@@ -14,6 +14,7 @@ Fixed::Fixed(const int value)
 	this->setRawBits(value * (1 << Fixed::_fractionalBits));
 }
 
+//float constructor
 Fixed::Fixed(const float value)
 {
 	std::cout << "Float constructor called" << std::endl;
