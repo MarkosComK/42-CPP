@@ -75,6 +75,26 @@ bool Fixed::operator<(const Fixed& rhs) const
 	return (this->getRawBits() < rhs.getRawBits());
 }
 
+bool Fixed::operator>=(const Fixed& rhs) const
+{
+	return (this->getRawBits() >= rhs.getRawBits());
+}
+
+bool Fixed::operator<=(const Fixed& rhs) const
+{
+	return (this->getRawBits() <= rhs.getRawBits());
+}
+
+bool Fixed::operator!=(const Fixed& rhs) const
+{
+	return (this->getRawBits() != rhs.getRawBits());
+}
+
+bool Fixed::operator==(const Fixed& rhs) const
+{
+	return (this->getRawBits() == rhs.getRawBits());
+}
+
 Fixed Fixed::operator+(const Fixed& rhs)
 {
 	return (Fixed((this->_fixedPoint + rhs._fixedPoint) / (float)(1 << _fractionalBits)));

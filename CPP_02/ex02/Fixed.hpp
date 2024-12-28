@@ -30,6 +30,10 @@ class Fixed
 		//operators
 		bool operator>(const Fixed& rhs) const;
 		bool operator<(const Fixed& rhs) const;
+		bool operator<=(Fixed const &fixed) const;
+		bool operator>=(Fixed const &fixed) const;
+		bool operator!=(Fixed const &fixed) const;
+		bool operator==(Fixed const &fixed) const;
 		Fixed operator+(const Fixed& rhs);
 		Fixed operator-(const Fixed& rhs);
 		Fixed operator++();
