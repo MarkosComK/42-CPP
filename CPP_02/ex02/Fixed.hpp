@@ -29,7 +29,9 @@ class Fixed
 
 		//operators
 		Fixed operator>(Fixed const& Fixed);
-		Fixed& operator++();
+		Fixed operator+(Fixed const& rhs);
+		Fixed operator-(Fixed const& rhs);
+		Fixed operator++();
 		Fixed operator++(int);
 };
 
