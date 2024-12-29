@@ -20,7 +20,7 @@ static float area (const Point& p1, const Point& p2, const Point& p3)
 	return area;
 }
 
-bool bsp(const Point& a, const Point& b, const Point& c, const Point& point)
+bool bsp(const Point a, const Point b, const Point c, const Point point)
 {
 	float d0, d1, d2, d3;
 	const float EPSILON = 0.0001f;
@@ -38,23 +38,19 @@ bool bsp(const Point& a, const Point& b, const Point& c, const Point& point)
 		return false;
 	return std::abs((d1 + d2 + d3) - d0) < EPSILON;
 }
-
-int main(int argc, char *argv[])
+int main()
 {
-	Point a, b, c, testPoint;
-
-	if (InputHandler::getTrianglePoints(argc, argv, a, b, c, testPoint))
+	Point a, b, c;
+	if (InputHandler::getTrianglePoints(a, b, c))
 	{
-		std::cout << "A pointer >" << std::endl;
-		std::cout << a.getX() << std::endl;
-		std::cout << a.getY() << std::endl;
-		std::cout << "<         >" << std::endl;
+		Point testPoint = InputHandler::getTestPoint();
 		
-		// ... rest of your code ...
-		
-		if (bsp(a, b, c, testPoint)) {
+		if (bsp(a, b, c, testPoint))
+		{
 			std::cout << "\nResult: Point P is inside the triangle!" << std::endl;
-		} else {
+		}
+		else
+		{
 			std::cout << "\nResult: Point P is outside the triangle!" << std::endl;
 		}
 	}

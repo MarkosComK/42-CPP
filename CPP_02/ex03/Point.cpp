@@ -5,7 +5,7 @@ Point::Point(): _x(Fixed(0)), _y(Fixed(0))
 	//empty XD
 }
 
-Point::Point(float x, float y): _x(Fixed(x)), _y(Fixed(y))
+Point::Point(float x, float y): _x(x), _y(y)
 {
 	//empty XD
 }

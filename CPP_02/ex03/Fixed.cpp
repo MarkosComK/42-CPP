@@ -15,7 +15,7 @@ Fixed::Fixed(const int value)
 //float constructor
 Fixed::Fixed(const float value)
 {
-	_fixedPoint = roundf(value * (1 << _fractionalBits));
+	_fixedPoint = roundf(value * (1 << Fixed::_fractionalBits));
 }
 
 //Copy constructor
