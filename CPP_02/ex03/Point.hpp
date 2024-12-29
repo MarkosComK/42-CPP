@@ -5,15 +5,15 @@
 class Point
 {
 	private:
-		Fixed const x;
-		Fixed const y;
+		Fixed const _x;
+		Fixed const _y;
 		
 	public:
 		Point();
 		Point(float x, float y);
-		Point(Point const & src);
+		Point(Point const& src);
 		~Point();
-		Point & operator=(Point const & rhs);
+		Point& operator=(Point const& rhs);
 };
 
 #endif
