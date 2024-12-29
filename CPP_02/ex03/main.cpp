@@ -1,5 +1,4 @@
 #include "InputHandler.hpp"
-#include "Visualizer.hpp"
 #include "Point.hpp"
 
 bool bsp(Point const a, Point const b, Point const c, Point const point);
@@ -11,10 +10,7 @@ int main()
 	if (InputHandler::getTrianglePoints(a, b, c))
 	{
 		Point testPoint = InputHandler::getTestPoint();
-		Visualizer viz;
-		viz.drawTriangle(a, b, c, testPoint);
 		
-		/*
 		if (bsp(a, b, c, testPoint))
 		{
 			std::cout << "\nResult: Point P is inside the triangle!" << std::endl;
@@ -23,7 +19,6 @@ int main()
 		{
 			std::cout << "\nResult: Point P is outside the triangle!" << std::endl;
 		}
-		*/
 	}
 	return 0;
 }
