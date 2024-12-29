@@ -5,51 +5,22 @@
 #include <sstream>
 #include "Point.hpp"
 
+#include <iostream>
+#include <string>
+#include <sstream>
+#include "Point.hpp"
+
 class InputHandler
 {
 	private:
-		static bool getNextNumber(std::istringstream& iss, float& number)
-		{
-			std::string token;
-			if (iss >> token) {
-				std::istringstream numberStream(token);
-				if (numberStream >> number) {
-					return true;
-				}
-			}
-			return false;
-		}
+		static bool isValidFloat(const std::string& str);
+		static float stringToFloat(const std::string& str);
+		static bool getNextNumber(std::istringstream& iss, float& number);
 
 	public:
-		static Point getPoint(const std::string& prompt)
-		{
-			std::string line;
-			float x, y;
-			
-			while (true)
-			{
-				std::cout << prompt << " (format: x y): ";
-				std::getline(std::cin, line);
-				
-				std::istringstream iss(line);
-				if (getNextNumber(iss, x) && getNextNumber(iss, y)) {
-					return Point(x, y);
-				}
-				std::cout << "Invalid input. Please enter two numbers separated by space." << std::endl;
-			}
-		}
-		static bool getTrianglePoints(Point& a, Point& b, Point& c)
-		{
-			std::cout << "Enter triangle coordinates:" << std::endl;
-			a = getPoint("Enter point A");
-			b = getPoint("Enter point B");
-			c = getPoint("Enter point C");
-			return true;
-		}
-		static Point getTestPoint()
-		{
-			return getPoint("Enter test point P");
-		}
+		static Point getPoint(const std::string& prompt);
+		static bool getTrianglePoints(Point& a, Point& b, Point& c);
+		static Point getTestPoint();
 };
 
 #endif
