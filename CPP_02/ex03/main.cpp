@@ -1,4 +1,3 @@
-#include "InputHandler.hpp"
 #include "Point.hpp"
 
 static float area (const Point& p1, const Point& p2, const Point& p3)
@@ -41,22 +40,30 @@ bool bsp(const Point& a, const Point& b, const Point& c, const Point& point)
 
 int main(int argc, char *argv[])
 {
-	Point a, b, c, testPoint;
-
-	if (InputHandler::getTrianglePoints(argc, argv, a, b, c, testPoint))
+	if (argc != 9)
 	{
-		std::cout << "A pointer >" << std::endl;
-		std::cout << a.getX() << std::endl;
-		std::cout << a.getY() << std::endl;
-		std::cout << "<         >" << std::endl;
-		
-		// ... rest of your code ...
-		
-		if (bsp(a, b, c, testPoint)) {
-			std::cout << "\nResult: Point P is inside the triangle!" << std::endl;
-		} else {
-			std::cout << "\nResult: Point P is outside the triangle!" << std::endl;
-		}
+		std::cout << "Usage: ./bsp ax ay bx by cx cy px py" << std::endl;
+		return 0;
+	}
+	float ax(std::stof(argv[1]));
+	float ay(std::stof(argv[2]));
+	float bx(std::stof(argv[3]));
+	float by(std::stof(argv[4]));
+	float cx(std::stof(argv[5]));
+	float cy(std::stof(argv[6]));
+	float px(std::stof(argv[7]));
+	float py(std::stof(argv[8]));
+
+	Point a(ax, ay);
+	Point b(bx, by);
+	Point c(cx, cy);
+	Point testPoint(px, py);
+
+	if (bsp(a, b, c, testPoint))
+	{
+		std::cout << "\nResult: Point P is inside the triangle!" << std::endl;
+	} else {
+		std::cout << "\nResult: Point P is outside the triangle!" << std::endl;
 	}
 	return 0;
 }
