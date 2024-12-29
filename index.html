@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Triangle Point Containment Demo</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        
+        .container {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+        }
+        
+        #status {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg width="300" height="200" id="canvas" style="background: white;">
+            <!-- Shapes will be drawn here by JavaScript -->
+        </svg>
+    </div>
+    <div id="status">
+        Move your mouse over the canvas to test points
+    </div>
+
+    <script>
+        // Get the SVG canvas
+        const svg = document.getElementById('canvas');
+        const status = document.getElementById('status');
+
+        // Triangle vertices
+        const triangle = {
+            a: { x: 100, y: 50 },
+            b: { x: 200, y: 50 },
+            c: { x: 150, y: 150 }
+        };
+
+        // Calculate area using the shoelace formula
+        function area(p1, p2, p3) {
+            return Math.abs(
+                (p1.x * (p2.y - p3.y) + 
+                 p2.x * (p3.y - p1.y) + 
+                 p3.x * (p1.y - p2.y)) / 2
+            );
+        }
+
+        // Check if point is inside triangle
+        function isInside(point) {
+            const totalArea = area(triangle.a, triangle.b, triangle.c);
+            const area1 = area(point, triangle.a, triangle.b);
+            const area2 = area(point, triangle.b, triangle.c);
+            const area3 = area(point, triangle.c, triangle.a);
+            
+            const sumAreas = area1 + area2 + area3;
+            return Math.abs(totalArea - sumAreas) < 0.1;
+        }
+
+        // Create SVG elements
+        const mainTriangle = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        const subTriangle1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        const subTriangle2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        const subTriangle3 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        const point = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+
+        // Set attributes for main triangle
+        mainTriangle.setAttribute("d", 
+            `M ${triangle.a.x} ${triangle.a.y} 
+             L ${triangle.b.x} ${triangle.b.y} 
+             L ${triangle.c.x} ${triangle.c.y} Z`);
+        mainTriangle.setAttribute("stroke", "black");
+        mainTriangle.setAttribute("stroke-width", "2");
+        mainTriangle.setAttribute("fill", "none");
+
+        // Add elements to SVG
+        svg.appendChild(mainTriangle);
+        svg.appendChild(subTriangle1);
+        svg.appendChild(subTriangle2);
+        svg.appendChild(subTriangle3);
+        svg.appendChild(point);
+
+        // Handle mouse movement
+        svg.addEventListener('mousemove', function(e) {
+            const rect = svg.getBoundingClientRect();
+            const mousePos = {
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top
+            };
+
+            // Update sub-triangles
+            subTriangle1.setAttribute("d", 
+                `M ${mousePos.x} ${mousePos.y} 
+                 L ${triangle.a.x} ${triangle.a.y} 
+                 L ${triangle.b.x} ${triangle.b.y} Z`);
+            subTriangle1.setAttribute("fill", "rgba(255,0,0,0.1)");
+            subTriangle1.setAttribute("stroke", "red");
+
+            subTriangle2.setAttribute("d", 
+                `M ${mousePos.x} ${mousePos.y} 
+                 L ${triangle.b.x} ${triangle.b.y} 
+                 L ${triangle.c.x} ${triangle.c.y} Z`);
+            subTriangle2.setAttribute("fill", "rgba(0,255,0,0.1)");
+            subTriangle2.setAttribute("stroke", "green");
+
+            subTriangle3.setAttribute("d", 
+                `M ${mousePos.x} ${mousePos.y} 
+                 L ${triangle.c.x} ${triangle.c.y} 
+                 L ${triangle.a.x} ${triangle.a.y} Z`);
+            subTriangle3.setAttribute("fill", "rgba(0,0,255,0.1)");
+            subTriangle3.setAttribute("stroke", "blue");
+
+            // Update point
+            point.setAttribute("cx", mousePos.x);
+            point.setAttribute("cy", mousePos.y);
+            point.setAttribute("r", "4");
+            point.setAttribute("fill", isInside(mousePos) ? "green" : "red");
+
+            // Update status text
+            status.textContent = `Point (${Math.round(mousePos.x)}, ${Math.round(mousePos.y)}) is ${isInside(mousePos) ? 'inside' : 'outside'} the triangle`;
+        });
+    </script>
+</body>
+</html>
