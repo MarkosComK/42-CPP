@@ -22,5 +22,6 @@ Point::~Point()
 
 Point& Point::operator=(Point const& rhs)
 {
+	(void) rhs;
 	return (*this);
 }

@@ -1,6 +1,15 @@
-#include "Fixed.hpp"
-#include <iostream>
+#include "InputHandler.hpp"
+#include "Point.hpp"
 
-int main(void) 
-{
+bool bsp(Point const a, Point const b, Point const c, Point const point);
+
+
+int main() {
+	Point a, b, c;
+	if (InputHandler::getTrianglePoints(a, b, c))
+	{
+		Point testPoint = InputHandler::getTestPoint();
+		// Use the points...
+	}
+	return (0);
 }
