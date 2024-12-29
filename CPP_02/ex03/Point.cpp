@@ -25,3 +25,13 @@ Point& Point::operator=(Point const& rhs)
 	(void) rhs;
 	return (*this);
 }
+
+Fixed const& Point::getX() const
+{
+	return (this->_x);
+}
+
+Fixed const& Point::getY() const
+{
+	return (this->_y);
+}
