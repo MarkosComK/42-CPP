@@ -31,7 +31,7 @@ Fixed::Fixed(const Fixed& other)
 // Destructor
 Fixed::~Fixed()
 {
-
+	std::cout << "Default destructor called" << std::endl;
 }
 
 // Assignment operator
