@@ -139,6 +139,13 @@ Fixed Fixed::operator*(const Fixed& rhs)
 	return (tmp);
 }
 
+Fixed Fixed::operator/(const Fixed& rhs)
+{
+	Fixed temp;
+	temp.setRawBits((this->_fixedPoint * (1 << _fractionalBits)) / rhs.getRawBits());
+	return (temp);
+}
+
 Fixed& Fixed::min(Fixed& a, Fixed& b)
 {
 	if (a > b)

@@ -41,6 +41,7 @@ class Fixed
 		Fixed operator--();
 		Fixed operator--(int);
 		Fixed operator*(const Fixed& rhs);
+		Fixed operator/(const Fixed& rhs);
 
 		static Fixed& min(Fixed& a, Fixed& b);
 		static Fixed& max(Fixed& a, Fixed& b);
