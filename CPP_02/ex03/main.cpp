@@ -1,6 +1,6 @@
 #include "Point.hpp"
 
-static float area (const Point& p1, const Point& p2, const Point& p3)
+static float area (const Point p1, const Point p2, const Point p3)
 {
 	// Debug prints
 	std::cout << "Point 1: (" << p1.getX().toFloat() << "," << p1.getY().toFloat() << ")\n";
@@ -19,7 +19,7 @@ static float area (const Point& p1, const Point& p2, const Point& p3)
 	return area;
 }
 
-bool bsp(const Point& a, const Point& b, const Point& c, const Point& point)
+bool bsp(const Point a, const Point b, const Point c, const Point point)
 {
 	float d0, d1, d2, d3;
 	const float EPSILON = 0.0001f;
