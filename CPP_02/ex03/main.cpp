@@ -1,4 +1,5 @@
 #include "Point.hpp"
+#include <string>
 
 static float area (const Point p1, const Point p2, const Point p3)
 {
@@ -40,19 +41,20 @@ bool bsp(const Point a, const Point b, const Point c, const Point point)
 
 int main(int argc, char *argv[])
 {
+	(void) argv;
 	if (argc != 9)
 	{
 		std::cout << "Usage: ./bsp ax ay bx by cx cy px py" << std::endl;
 		return 0;
 	}
-	float ax(std::stof(argv[1]));
-	float ay(std::stof(argv[2]));
-	float bx(std::stof(argv[3]));
-	float by(std::stof(argv[4]));
-	float cx(std::stof(argv[5]));
-	float cy(std::stof(argv[6]));
-	float px(std::stof(argv[7]));
-	float py(std::stof(argv[8]));
+	float ax = atof(argv[1]);
+	float ay = atof(argv[2]);
+	float bx = atof(argv[3]);
+	float by = atof(argv[4]);
+	float cx = atof(argv[5]);
+	float cy = atof(argv[6]);
+	float px = atof(argv[7]);
+	float py = atof(argv[8]);
 
 	Point a(ax, ay);
 	Point b(bx, by);
