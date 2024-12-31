@@ -16,6 +16,8 @@ class ScavTrap : public ClapTrap
 		ScavTrap(std::string _Name);
 		ScavTrap(ScavTrap const& copy);
 		ScavTrap& operator=(ScavTrap const& rhs);
+		//members
+		void guardGate(void);
 };
 
 #endif
