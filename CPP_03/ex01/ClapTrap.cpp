@@ -2,18 +2,18 @@
 
 ClapTrap::ClapTrap()
 {
-	std::cout << "ClapTrap " << _Name << " constructor called" << std::endl;
+	std::cout << "ClapTrap " << _Name << " constructor called..." << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name): _Name("default"), _HPoints(10), _EPoints(10), _ADamage(0)
 {
 	_Name = name;
-	std::cout << "ClapTrap " << _Name << " constructor called" << std::endl;
+	std::cout << "ClapTrap " << _Name << " constructor called..." << std::endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap " << _Name << " destructor called" << std::endl;
+	std::cout << "ClapTrap " << _Name << " destructor called..." << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target)

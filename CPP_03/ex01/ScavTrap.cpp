@@ -6,7 +6,7 @@ ScavTrap::ScavTrap() : ClapTrap()
 	_EPoints = 50;
 	_ADamage = 20;
 	_GGate = false;
-	std::cout << "ScavTrap " << _Name << " constructor called!" << std::endl;
+	std::cout << "ScavTrap " << _Name << " constructor called..." << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
@@ -15,7 +15,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	_EPoints = 50;
 	_ADamage = 20;
 	_GGate = false;
-	std::cout << "ScavTrap " << _Name << " constructor called!" << std::endl;
+	std::cout << "ScavTrap " << _Name << " constructor called..." << std::endl;
 }
 
 void ScavTrap::attack(const std::string& target)
@@ -37,7 +37,7 @@ void ScavTrap::takeDamage(unsigned int amount)
 		std::cout << "ScavTrap" << _Name << " is unable to take damage!" << std::endl;
 	else
 	{
-		std::cout << "ScavTrap " << _Name << " takes" << amount <<
+		std::cout << "ScavTrap " << _Name << " takes " << amount <<
 			" points of damage!"
 			<< std::endl;
 	}
@@ -49,7 +49,7 @@ void ScavTrap::beRepaired(unsigned int amount)
 		std::cout << "ScavTrap " << _Name << " is stuck" << std::endl;
 	else
 	{
-		std::cout << "ScavTrap " << _Name << " welds itself for" << amount <<
+		std::cout << "ScavTrap " << _Name << " welds itself for " << amount <<
 			" points!"
 			<< std::endl;
 		_HPoints += amount;
@@ -77,7 +77,7 @@ ScavTrap& ScavTrap::operator=(ScavTrap const& rhs)
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << "ScavTrap " << _Name << " destructor called!" << std::endl;
+	std::cout << "ScavTrap " << _Name << " destructor called..." << std::endl;
 }
 
 void ScavTrap::guardGate(void)
