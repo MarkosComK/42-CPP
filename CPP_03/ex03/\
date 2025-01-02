@@ -1,0 +1,9 @@
+#include "DiamondTrap.hpp"
+
+DiamondTrap::DiamondTrap()
+{
+}
+
+DiamondTrap::~DiamondTrap(std::string name) _Name(name)
+{
+}
