@@ -49,7 +49,7 @@ void ScavTrap::beRepaired(unsigned int amount)
 		std::cout << "ScavTrap " << _Name << " is stuck" << std::endl;
 	else
 	{
-		std::cout << "ClapTrap: " << _Name << " welds itself for" << amount <<
+		std::cout << "ScavTrap " << _Name << " welds itself for" << amount <<
 			" points!"
 			<< std::endl;
 		_HPoints += amount;

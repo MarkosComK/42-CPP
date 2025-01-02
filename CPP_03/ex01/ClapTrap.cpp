@@ -47,7 +47,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 		std::cout << "ClapTrap " << _Name << " is unable to move" << std::endl;
 	else
 	{
-		std::cout << "ClapTrap: " << _Name << " received " << amount <<
+		std::cout << "ClapTrap " << _Name << " received " << amount <<
 			" points to be repaired!"
 			<< std::endl;
 		_HPoints += amount;
