@@ -35,7 +35,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 		std::cout << "ClapTrap " << _Name << " is unable to take damage" << std::endl;
 	else
 	{
-		std::cout << "ClapTrap " << _Name << " received " << amount <<
+		std::cout << "ClapTrap " << _Name << " takes " << amount <<
 			" points of damage!"
 			<< std::endl;
 	}
@@ -47,8 +47,8 @@ void ClapTrap::beRepaired(unsigned int amount)
 		std::cout << "ClapTrap " << _Name << " is unable to move" << std::endl;
 	else
 	{
-		std::cout << "ClapTrap " << _Name << " received " << amount <<
-			" points to be repaired!"
+		std::cout << "ClapTrap " << _Name << " repairs itself for " << amount <<
+			" points!"
 			<< std::endl;
 		_HPoints += amount;
 		_EPoints--;
