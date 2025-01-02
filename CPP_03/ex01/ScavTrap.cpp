@@ -6,7 +6,7 @@ ScavTrap::ScavTrap() : ClapTrap()
 	_EPoints = 50;
 	_ADamage = 20;
 	_GGate = false;
-	std::cout << "ScavTrap " << _Name << "constructor called" << std::endl;
+	std::cout << "ScavTrap " << _Name << " constructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
@@ -15,7 +15,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	_EPoints = 50;
 	_ADamage = 20;
 	_GGate = false;
-	std::cout << "ScavTrap " << _Name << "constructor called" << std::endl;
+	std::cout << "ScavTrap " << _Name << " constructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap(ScavTrap const& copy) : ClapTrap(copy)
