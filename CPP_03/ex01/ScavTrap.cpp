@@ -6,7 +6,7 @@ ScavTrap::ScavTrap() : ClapTrap()
 	_EPoints = 50;
 	_ADamage = 20;
 	_GGate = false;
-	std::cout << "Default ScavTrap has born" << std::endl;
+	std::cout << "ScavTrap " << _Name << "constructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
@@ -15,7 +15,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	_EPoints = 50;
 	_ADamage = 20;
 	_GGate = false;
-	std::cout << "ScavTrap has born" << std::endl;
+	std::cout << "ScavTrap " << _Name << "constructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap(ScavTrap const& copy) : ClapTrap(copy)
@@ -38,11 +38,19 @@ ScavTrap& ScavTrap::operator=(ScavTrap const& rhs)
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << "Oh no! " << _Name << " is dying..." << std::endl;
+	std::cout << "ScavTrap " << _Name << " destructor called" << std::endl;
 }
 
 void ScavTrap::guardGate(void)
 {
-	std::cout << _Name << " is now in guard mode" << std::endl;
-	_GGate = true;
+	if (_GGate)
+	{
+		std::cout << "ScavTrap " << _Name << " exits guard mode" << std::endl;
+		_GGate = !_GGate;
+	}
+	else
+	{
+		std::cout << "ScavTrap " << _Name << " is now in guard mode" << std::endl;
+		_GGate = !_GGate;
+	}
 }
