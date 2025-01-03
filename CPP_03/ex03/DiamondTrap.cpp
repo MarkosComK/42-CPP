@@ -53,3 +53,30 @@ void DiamondTrap::attack(const std::string& target)
 {
 	ScavTrap::attack(target);
 }
+
+void DiamondTrap::takeDamage(unsigned int amount)
+{
+	if (_HPoints <= 0)
+		std::cout << "DiamondTrap " << _Name << " is already down!" << std::endl;
+	else
+	{
+		std::cout << "DiamondTrap " << _Name << " takes " << amount << " points of damage!" << std::endl;
+		_HPoints -= amount;
+		if (_HPoints < 0)
+			_HPoints = 0;
+	}
+}
+
+void DiamondTrap::beRepaired(unsigned int amount)
+{
+	if (_HPoints <= 0)
+		std::cout << "DiamondTrap " << _Name << " can't be repaired while down!" << std::endl;
+	else if (_EPoints <= 0)
+		std::cout << "DiamondTrap " << _Name << " has no energy to repair!" << std::endl;
+	else
+	{
+		std::cout << "DiamondTrap " << _Name << " repairs " << amount << " points!" << std::endl;
+		_HPoints += amount;
+		_EPoints--;
+	}
+}

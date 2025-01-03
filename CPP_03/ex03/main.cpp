@@ -3,60 +3,32 @@
 
 int main(void)
 {
-	// Print section separator
-	std::cout << "\n=== Creating DiamondTrap ===\n" << std::endl;
+	std::cout << "\n=== Basic Tests ===\n" << std::endl;
 
-	// Create a DiamondTrap instance
-	DiamondTrap diamond("Diamond_1");
+	DiamondTrap d1("D1");
+	std::cout << "\n=== Testing whoAmI ===\n" << std::endl;
+	d1.whoAmI();
 
-	// Test whoAmI function to see both names
-	std::cout << "\n=== Testing Names with whoAmI() ===\n" << std::endl;
-	diamond.whoAmI();
+	std::cout << "\n=== Testing Abilities ===\n" << std::endl;
+	d1.attack("target");  // Should use ScavTrap's attack
+	d1.guardGate();      // From ScavTrap
+	d1.highFivesGuys();  // From FragTrap
 
-	// Test inherited attributes and functions
-	std::cout << "\n=== Testing Basic Functions ===\n" << std::endl;
+	std::cout << "\n=== Testing Stats ===\n" << std::endl;
+	// Test HP (100), Energy (50), Attack (30)
+	d1.takeDamage(30);
+	d1.beRepaired(20);
 
-	diamond.attack("Target_1");  // Should use ScavTrap's attack
-	diamond.takeDamage(20);
-	diamond.beRepaired(10);
+	std::cout << "\n=== Testing Copy ===\n" << std::endl;
+	DiamondTrap d2(d1);
+	d2.whoAmI();
 
-	// Test special abilities from both parent classes
-	std::cout << "\n=== Testing Special Abilities ===\n" << std::endl;
-
-	diamond.guardGate();     // From ScavTrap
-	diamond.highFivesGuys(); // From FragTrap
-
-	// Test energy points consumption
 	std::cout << "\n=== Testing Energy Points ===\n" << std::endl;
-
-	// Perform multiple actions to test energy points (ScavTrap's 50 energy points)
-	for (int i = 0; i < 5; i++) {
-		std::cout << "\nAttempt " << i + 1 << ":" << std::endl;
-		diamond.attack("Target_2");
-		diamond.beRepaired(5);
+	// Should be limited by ScavTrap's 50 energy points
+	for(int i = 0; i < 6; i++) {
+	   d2.attack("dummy");
 	}
 
-	// Test hit points
-	std::cout << "\n=== Testing Hit Points ===\n" << std::endl;
-
-	// Try to deplete hit points (FragTrap's 100 hit points)
-	diamond.takeDamage(50);
-	diamond.attack("Target_3");
-	diamond.takeDamage(50);  // This should deplete remaining HP
-	diamond.attack("Target_4");  // Should not work - no HP
-	diamond.beRepaired(30);  // Should not work - no HP
-
-	// Test scope and destruction
-	std::cout << "\n=== Testing Scope and Destruction ===\n" << std::endl;
-	{
-		DiamondTrap diamond2("Diamond_2");
-		// diamond2 will be destroyed when leaving this scope
-	}
-
-	std::cout << "\n=== Creating Another DiamondTrap ===\n" << std::endl;
-	DiamondTrap diamond3("Diamond_3");
-
-	std::cout << "\n=== End of Main ===\n" << std::endl;
-
+	std::cout << "\n=== Testing Destruction ===\n" << std::endl;
 	return 0;
 }
