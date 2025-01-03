@@ -22,7 +22,7 @@ ClapTrap::~ClapTrap()
 void ClapTrap::attack(const std::string& target)
 {
 	if (_HPoints <= 0 || _EPoints <= 0)
-		std::cout << _Name << "is unable to atack" << std::endl;
+		std::cout << _Name << " is unable to atack" << std::endl;
 	else
 	{
 		std::cout << "ClapTrap: "<< _Name <<" attacks " << target <<
@@ -41,6 +41,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 		std::cout << "ClapTrap: "<< _Name <<" received " << amount <<
 			" points of damage!"
 			<< std::endl;
+			_HPoints -= amount;
 	}
 }
 
