@@ -1,6 +1,9 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap()
+DiamondTrap::DiamondTrap():
+	ClapTrap(),
+	ScavTrap(),
+	FragTrap()
 {
 	_Name = "default";
 	ClapTrap::_Name = _Name + "_clap_name";
@@ -10,7 +13,10 @@ DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap()
 	std::cout << "DiamondTrap " << _Name << " constructor called" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name)
+DiamondTrap::DiamondTrap(std::string name):
+	ClapTrap(name + "_clap_name"),
+	ScavTrap(name),
+	FragTrap(name)
 {
 	_Name = name;
 	_HPoints = FragTrap::_HPoints;
@@ -19,9 +25,15 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), Scav
 	std::cout << "DiamondTrap " << _Name << " constructor called" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap& copy) : ClapTrap(copy), ScavTrap(copy), FragTrap(copy)
+DiamondTrap::DiamondTrap(const DiamondTrap& copy):
+	ClapTrap(copy),
+	ScavTrap(copy),
+	FragTrap(copy)
 {
-	*this = copy;
+	_Name = copy._Name;
+	_HPoints = copy._HPoints;
+	_EPoints = copy._EPoints;
+	_ADamage = copy._ADamage;
 	std::cout << "DiamondTrap copy constructor called" << std::endl;
 }
 
@@ -51,7 +63,15 @@ void DiamondTrap::whoAmI()
 
 void DiamondTrap::attack(const std::string& target)
 {
-	ScavTrap::attack(target);
+	if (_HPoints <= 0 || _EPoints <= 0)
+		std::cout << "DiamondTrap " << _Name << " is unable to move!" << std::endl;
+	else
+	{
+		std::cout << "DiamondTrap " << _Name << " smashes " << target 
+			<< ", causing " << _ADamage << " points of damage!"
+			<< std::endl;
+		_EPoints--;
+	}
 }
 
 void DiamondTrap::takeDamage(unsigned int amount)

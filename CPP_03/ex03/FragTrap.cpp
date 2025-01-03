@@ -4,7 +4,7 @@ FragTrap::FragTrap() : ClapTrap()
 {
 	_HPoints = 100;
 	_EPoints = 50;
-	_ADamage = 20;
+	_ADamage = 30;
 	std::cout << "FragTrap " << _Name << " constructor called..." << std::endl;
 }
 
@@ -12,7 +12,7 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	_HPoints = 100;
 	_EPoints = 50;
-	_ADamage = 20;
+	_ADamage = 30;
 	std::cout << "FragTrap " << _Name << " constructor called..." << std::endl;
 }
 
