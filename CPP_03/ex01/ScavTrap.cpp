@@ -40,6 +40,7 @@ void ScavTrap::takeDamage(unsigned int amount)
 		std::cout << "ScavTrap " << _Name << " takes " << amount <<
 			" points of damage!"
 			<< std::endl;
+		_HPoints -= amount;
 	}
 }
 
@@ -66,10 +67,7 @@ ScavTrap& ScavTrap::operator=(ScavTrap const& rhs)
 {
 	if (this != &rhs)
 	{
-		_Name = rhs._Name;
-		_HPoints = rhs._HPoints;
-		_EPoints = rhs._EPoints;
-		_ADamage = rhs._ADamage;
+		ClapTrap::operator=(rhs);
 		_GGate = rhs._GGate;
 	}
 	return (*this);
@@ -82,14 +80,11 @@ ScavTrap::~ScavTrap()
 
 void ScavTrap::guardGate(void)
 {
-	if (_GGate)
+	if (_EPoints <= 0)
 	{
-		std::cout << "ScavTrap " << _Name << " exits Gate keeper!" << std::endl;
-		_GGate = !_GGate;
+		std::cout << "ScavTrap " << _Name << " has no energy to change guard mode!" << std::endl;
+		return;
 	}
-	else
-	{
-		std::cout << "ScavTrap " << _Name << " is now in Gate keeper mode!" << std::endl;
-		_GGate = !_GGate;
-	}
+	_GGate = !_GGate;
+	std::cout << "ScavTrap " << _Name << (_GGate ? " enters" : " exits") << " Gate keeper mode!" << std::endl;
 }

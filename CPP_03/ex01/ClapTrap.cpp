@@ -5,9 +5,8 @@ ClapTrap::ClapTrap()
 	std::cout << "ClapTrap " << _Name << " constructor called..." << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name): _Name("default"), _HPoints(10), _EPoints(10), _ADamage(0)
+ClapTrap::ClapTrap(std::string name): _Name(name), _HPoints(10), _EPoints(10), _ADamage(0)
 {
-	_Name = name;
 	std::cout << "ClapTrap " << _Name << " constructor called..." << std::endl;
 }
 
@@ -31,14 +30,13 @@ void ClapTrap::attack(const std::string& target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	if (_HPoints <= 0 || _EPoints <= 0)
-		std::cout << "ClapTrap " << _Name << " is unable to take damage" << std::endl;
-	else
+	if (_HPoints <= 0)
 	{
-		std::cout << "ClapTrap " << _Name << " takes " << amount <<
-			" points of damage!"
-			<< std::endl;
+		std::cout << "ClapTrap " << _Name << " is already defeated!" << std::endl;
+		return;
 	}
+	_HPoints = (_HPoints > (int) amount) ? _HPoints - amount : 0;
+	std::cout << "ClapTrap " << _Name << " takes " << amount << " points of damage!" << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
@@ -70,4 +68,19 @@ ClapTrap& ClapTrap::operator=(ClapTrap const& rhs)
 		_ADamage = rhs._ADamage;
 	}
 	return (*this);
+}
+
+int const& ClapTrap::getHPoints(void) const
+{
+	return (_HPoints);
+}
+
+int const& ClapTrap::getEPoints(void) const
+{
+	return (_EPoints);
+}
+
+int const& ClapTrap::getADamage(void) const
+{
+	return (_ADamage);
 }
