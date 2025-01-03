@@ -1,60 +1,55 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() : ClapTrap()
+DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap()
 {
-	std::cout << "Simple Diamond CREATE Test" << std::endl;
+	_Name = "default";
+	ClapTrap::_Name = _Name + "_clap_name";
+	_HPoints = FragTrap::_HPoints;
+	_EPoints = ScavTrap::_EPoints;
+	_ADamage = FragTrap::_ADamage;
+	std::cout << "DiamondTrap " << _Name << " constructor called" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name)
 {
-	std::cout << "Simple Diamond CREATE Test" << std::endl;
+	_Name = name;
+	_HPoints = FragTrap::_HPoints;
+	_EPoints = ScavTrap::_EPoints;
+	_ADamage = FragTrap::_ADamage;
+	std::cout << "DiamondTrap " << _Name << " constructor called" << std::endl;
+}
+
+DiamondTrap::DiamondTrap(const DiamondTrap& copy) : ClapTrap(copy), ScavTrap(copy), FragTrap(copy)
+{
+	*this = copy;
+	std::cout << "DiamondTrap copy constructor called" << std::endl;
+}
+
+DiamondTrap& DiamondTrap::operator=(const DiamondTrap& rhs)
+{
+	if (this != &rhs)
+	{
+		this->_Name = rhs._Name;
+		this->_HPoints = rhs._HPoints;
+		this->_EPoints = rhs._EPoints;
+		this->_ADamage = rhs._ADamage;
+		ClapTrap::_Name = rhs.ClapTrap::_Name;
+	}
+	return (*this);
 }
 
 DiamondTrap::~DiamondTrap()
 {
-	std::cout << "Simple Diamond DESTROI Test" << std::endl;
+	std::cout << "DiamondTrap " << this->_Name << " destructor called" << std::endl;
 }
 
 void DiamondTrap::whoAmI()
 {
-	std::cout << "Simple Diamond WHOAMI Test" << std::endl;
-}
-
-void DiamondTrap::takeDamage(unsigned int amount)
-{
-	if (_HPoints <= 0 || _EPoints <= 0)
-		std::cout << "DiamondTrap " << _Name << " is unable to take damage!" << std::endl;
-	else
-	{
-		std::cout << "DimaondTrap " << _Name << " takes " << amount <<
-			" points of damage!"
-			<< std::endl;
-	}
-}
-
-void DiamondTrap::beRepaired(unsigned int amount)
-{
-	if (_HPoints <= 0 || _EPoints <= 0)
-		std::cout << "DiamondTrap " << _Name << " is stuck" << std::endl;
-	else
-	{
-		std::cout << "DiamondTrap " << _Name << " welds itself for " << amount <<
-			" points!"
-			<< std::endl;
-		_HPoints += amount;
-		_EPoints--;
-	}
+	std::cout << "I am DiamondTrap " << this->_Name 
+			  << ", also known as ClapTrap " << ClapTrap::_Name << std::endl;
 }
 
 void DiamondTrap::attack(const std::string& target)
 {
-	if (_HPoints <= 0 || _EPoints <= 0)
-		std::cout << "DiamondTrap " << _Name << " is unable to move!" << std::endl;
-	else
-	{
-		std::cout << "DiamondTrap " << _Name << " smashes " << target <<
-			", causing " << _ADamage << " points of damage!"
-			<< std::endl;
-		_EPoints--;
-	}
+	ScavTrap::attack(target);
 }

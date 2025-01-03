@@ -12,6 +12,8 @@ class DiamondTrap : public ScavTrap, public FragTrap
 		DiamondTrap();
 		DiamondTrap(std::string name);
 		~DiamondTrap();
+		DiamondTrap(const DiamondTrap& copy);
+		DiamondTrap& operator=(const DiamondTrap& rhs);
 		//Hit points (FragTrap)
 		//Energy points (ScavTrap)
 		void beRepaired(unsigned int amount);
