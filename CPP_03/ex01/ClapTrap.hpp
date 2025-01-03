@@ -12,8 +12,7 @@ class ClapTrap
 
 	public:
 		ClapTrap(std::string _Name);
-		ClapTrap();
-		~ClapTrap();
+		virtual ~ClapTrap();
 		ClapTrap(ClapTrap const& copy);
 		ClapTrap& operator=(ClapTrap const& rhs);
 

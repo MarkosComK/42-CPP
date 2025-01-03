@@ -1,14 +1,5 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap()
-{
-	_HPoints = 100;
-	_EPoints = 50;
-	_ADamage = 20;
-	_GGate = false;
-	std::cout << "ScavTrap " << _Name << " constructor called..." << std::endl;
-}
-
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	_HPoints = 100;
