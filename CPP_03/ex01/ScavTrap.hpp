@@ -7,7 +7,7 @@ class ScavTrap : public ClapTrap
 	private:
 		bool _GGate;
 	public:
-		ScavTrap(std::string _Name);
+		ScavTrap(std::string name);
 		ScavTrap(ScavTrap const& copy);
 		ScavTrap& operator=(ScavTrap const& rhs);
 		~ScavTrap();
