@@ -33,15 +33,13 @@ void ScavTrap::attack(const std::string& target)
 
 void ScavTrap::takeDamage(unsigned int amount)
 {
-	if (_HPoints <= 0 || _EPoints <= 0)
-		std::cout << "ScavTrap" << _Name << " is unable to take damage!" << std::endl;
-	else
+	if (_HPoints <= 0)
 	{
-		std::cout << "ScavTrap " << _Name << " takes " << amount <<
-			" points of damage!"
-			<< std::endl;
-		_HPoints -= amount;
+		std::cout << "ScavTrap " << _Name << " is already defeated!" << std::endl;
+		return;
 	}
+	std::cout << "ScavTrap " << _Name << " takes " << amount << " points of damage!" << std::endl;
+	_HPoints = (_HPoints > (int)amount) ? _HPoints - amount : 0;
 }
 
 void ScavTrap::beRepaired(unsigned int amount)
