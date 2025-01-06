@@ -2,10 +2,13 @@
 #define CAT_HPP
 #include "Animal.hpp"
 
-class Cat : Animal
+class Cat : public Animal
 {
 	public:
-		makeSound();
+		Cat();
+		~Cat();
+		void makeSound();
+		std::string getType();
 };
 
 #endif

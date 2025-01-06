@@ -1,6 +1,6 @@
 NAME = poly
-SRCS = main.cpp Animal.cpp
-FLAGS = -Wall -Wextra -Werror -std=++98
+SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp
+FLAGS = -Wall -Wextra -Werror -std=c++98
 
 all:
 	c++ ${FLAGS} ${SRCS} -o ${NAME}
