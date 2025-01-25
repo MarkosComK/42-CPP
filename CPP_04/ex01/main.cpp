@@ -1,90 +1,104 @@
-#include <iostream>
 #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
+#include <iostream>
 
-void test_regular_animals() {
-   std::cout << "\n=== Testing Regular Animals ===\n" << std::endl;
-   
-   const Animal* meta = new Animal();
-   const Animal* dog = new Dog();
-   const Animal* cat = new Cat();
-   
-   std::cout << "\nTesting Types:" << std::endl;
-   std::cout << "Dog type: " << dog->getType() << std::endl;
-   std::cout << "Cat type: " << cat->getType() << std::endl;
-   std::cout << "Base type: " << meta->getType() << std::endl;
-   
-   std::cout << "\nTesting Sounds:" << std::endl;
-   dog->makeSound();
-   cat->makeSound();
-   meta->makeSound();
-   
-   std::cout << "\nTesting Delete:" << std::endl;
-   delete meta;
-   delete dog;
-   delete cat;
+void testDeepCopy() {
+    std::cout << "\n=== Testing Deep Copy ===\n" << std::endl;
+    
+    // Create original dog and set some ideas
+    Dog originalDog;
+    originalDog.setBrainIdea(0, "I love bones!");
+    originalDog.setBrainIdea(1, "Must chase tail!");
+    
+    // Create a copy using copy constructor
+    Dog copyDog(originalDog);
+    
+    // Create another dog and use assignment operator
+    Dog assignDog;
+    assignDog = originalDog;
+    
+    // Modify original dog's ideas
+    originalDog.setBrainIdea(0, "Modified idea!");
+    
+    // Print all dogs' ideas to verify deep copy
+    std::cout << "Original dog's idea: " << originalDog.getBrainIdea(0) << std::endl;
+    std::cout << "Copy dog's idea: " << copyDog.getBrainIdea(0) << std::endl;
+    std::cout << "Assigned dog's idea: " << assignDog.getBrainIdea(0) << std::endl;
+    
+    // Same test for cats
+    Cat originalCat;
+    originalCat.setBrainIdea(0, "I love fish!");
+    Cat copyCat(originalCat);
+    Cat assignCat = originalCat;
+    
+    originalCat.setBrainIdea(0, "Modified cat idea!");
+    
+    std::cout << "Original cat's idea: " << originalCat.getBrainIdea(0) << std::endl;
+    std::cout << "Copy cat's idea: " << copyCat.getBrainIdea(0) << std::endl;
+    std::cout << "Assigned cat's idea: " << assignCat.getBrainIdea(0) << std::endl;
 }
 
-void test_wrong_animals() {
-    std::cout << "\n=== Testing Wrong Animals ===\n" << std::endl;
+void testArrayOfAnimals() {
+    std::cout << "\n=== Testing Array of Animals ===\n" << std::endl;
     
-    const WrongAnimal* wrong_meta = new WrongAnimal();
-    const WrongAnimal* wrong_cat = new WrongCat();
+    const int arraySize = 4;  // Make it even for half dogs, half cats
+    Animal* animals[arraySize];
     
-    // Add copy test
-    WrongCat original_wrong_cat;
-    WrongCat copied_wrong_cat(original_wrong_cat);
+    // Fill array with dogs and cats
+    for (int i = 0; i < arraySize; i++) {
+        if (i < arraySize / 2) {
+            animals[i] = new Dog();
+            std::cout << "Created Dog " << i << std::endl;
+        } else {
+            animals[i] = new Cat();
+            std::cout << "Created Cat " << i << std::endl;
+        }
+    }
     
-    std::cout << "\nTesting Types:" << std::endl;
-    std::cout << "WrongCat type: " << wrong_cat->getType() << std::endl;
-    std::cout << "Wrong base type: " << wrong_meta->getType() << std::endl;
+    // Make them make sounds
+    for (int i = 0; i < arraySize; i++) {
+        std::cout << "Animal " << i << " makes sound: ";
+        animals[i]->makeSound();
+    }
     
-    std::cout << "\nTesting Sounds:" << std::endl;
-    wrong_cat->makeSound();
-    wrong_meta->makeSound();
-    
-    delete wrong_meta;
-    delete wrong_cat;
-}
-void test_copy_constructor() {
-   std::cout << "\n=== Testing Copy Constructors ===\n" << std::endl;
-   
-   std::cout << "Creating original objects:" << std::endl;
-   Cat original_cat;
-   Dog original_dog;
-   
-   std::cout << "\nTesting Cat copy:" << std::endl;
-   Cat copied_cat(original_cat);
-   copied_cat.makeSound();
-   
-   std::cout << "\nTesting Dog copy:" << std::endl;
-   Dog copied_dog(original_dog);
-   copied_dog.makeSound();
+    // Delete all animals
+    std::cout << "\nDeleting all animals..." << std::endl;
+    for (int i = 0; i < arraySize; i++) {
+        delete animals[i];
+    }
 }
 
-void test_assignment_operator() {
-   std::cout << "\n=== Testing Assignment Operators ===\n" << std::endl;
-
-   Cat cat1, cat2;
-   Dog dog1, dog2;
-
-   std::cout << "\nTesting Cat assignment:" << std::endl;
-   cat2 = cat1;
-   cat2.makeSound();
-
-   std::cout << "\nTesting Dog assignment:" << std::endl;
-   dog2 = dog1;
-   dog2.makeSound();
+void testBasicFunctionality() {
+    std::cout << "\n=== Testing Basic Functionality ===\n" << std::endl;
+    
+    const Animal* j = new Dog();
+    const Animal* i = new Cat();
+    
+    j->makeSound();
+    i->makeSound();
+    
+    delete j;
+    delete i;
 }
 
 int main() {
-   test_regular_animals();
-   test_wrong_animals();
-   test_copy_constructor();
-   test_assignment_operator();
-
-   return 0;
+    std::cout << "Starting Animal Class Tests\n" << std::endl;
+    
+    // Test 1: Basic functionality test
+    testBasicFunctionality();
+    
+    // Test 2: Deep copy test
+    testDeepCopy();
+    
+    // Test 3: Array of animals test
+    testArrayOfAnimals();
+    
+    std::cout << "\nAll tests completed.\n" << std::endl;
+    
+    // Optional: Test for memory leaks
+    // You can run this program with valgrind to check for memory leaks:
+    // valgrind --leak-check=full ./your_program
+    
+    return 0;
 }

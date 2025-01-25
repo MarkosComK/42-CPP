@@ -1,11 +1,14 @@
 #ifndef CAT_HPP
 #define CAT_HPP
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Cat: public Animal
 {
 	private:
 		// Private Members
+		Brain *_brain;
+
 
 	public:
 	// Constructors
@@ -20,10 +23,9 @@ class Cat: public Animal
 
 	// Public Methods
 		void makeSound(void)const;
-	// Getter
 
-	// Setter
-
+		std::string getBrainIdea(int index)const;
+		void setBrainIdea(size_t i, std::string idea);
 };
 
 #endif

@@ -1,5 +1,5 @@
 NAME = poly
-SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongCat.cpp WrongAnimal.cpp
+SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongCat.cpp WrongAnimal.cpp Brain.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: ${NAME}
