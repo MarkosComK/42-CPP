@@ -19,7 +19,7 @@ class Animal
 		Animal &operator=(const Animal &src);
 
 	// Public Methods
-		virtual void makeSound(void)const;
+		virtual void makeSound(void)const = 0;
 	// Getter
 		std::string getType(void)const;
 	// Setter

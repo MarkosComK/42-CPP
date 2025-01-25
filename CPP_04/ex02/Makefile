@@ -1,13 +1,24 @@
-NAME = poly
-SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongCat.cpp WrongAnimal.cpp Brain.cpp
-FLAGS = -Wall -Wextra -Werror -std=c++98
+# Makefile
+NAME = abstract_animal
+CC = c++
+CFLAGS = -Wall -Wextra -Werror -std=c++98
+SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
+OBJ = $(SRC:.cpp=.o)
 
-all: ${NAME}
+all: $(NAME)
 
-${NAME}:
-	c++ ${FLAGS} ${SRCS} -o ${NAME}
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm ${NAME}
+	rm -f $(OBJ)
 
-re: clean all
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
