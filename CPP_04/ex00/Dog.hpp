@@ -5,10 +5,15 @@
 class Dog : public Animal
 {
 	public:
+		// Constructors
 		Dog();
+		Dog(const Dog &copy);
+
+		// Destructors
 		~Dog();
-		void makeSound();
-		std::string getType();
+
+		Dog &operator=(const Dog &src);
+		void makeSound(void) const;
 };
 
 #endif

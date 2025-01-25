@@ -1,9 +1,16 @@
 #include "Dog.hpp"
 
 
-Dog::Dog()
+Dog::Dog() : Animal()
 {
-	std::cout << "A little puppy showed up" << std::endl;
+	this->_type = "Dog";
+	std::cout << "A liltle puppy showed up!" << std::endl;
+}
+
+Dog::Dog(const Dog &copy) : Animal()
+{
+	this->_type = copy._type;
+	std::cout << "Dog Copy constructor called" << std::endl;
 }
 
 Dog::~Dog()
@@ -11,12 +18,16 @@ Dog::~Dog()
 
 }
 
-void Dog::makeSound(void)
+Dog &Dog::operator=(const Dog &src)
 {
-	std::cout << "Woof woof!" << std::endl;
+	if (this == &src)
+		return (*this);
+	std::cout << "Dog assign operator called" << std::endl;
+	this->_type = src._type;
+	return (*this);
 }
 
-std::string Dog::getType()
+void Dog::makeSound(void) const
 {
-	return (this->type);
+	std::cout << "Woof Woof!" << std::endl;
 }

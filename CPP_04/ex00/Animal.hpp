@@ -5,14 +5,25 @@
 class Animal
 {
 	protected:
-		std::string type;
+		std::string _type;
+
 	public:
+	// Constructors
 		Animal();
-		Animal(std::string type);
-		~Animal();
-		void setType(std::string newType);
-		std::string getType() const;
-		virtual void makeSound() const;
+		Animal(const Animal &copy);
+
+	// Deconstructors
+		virtual ~Animal();
+
+	// Overloaded Operators
+		Animal &operator=(const Animal &src);
+
+	// Public Methods
+		virtual void makeSound(void)const;
+	// Getter
+		std::string getType(void)const;
+	// Setter
+
 };
 
 #endif
