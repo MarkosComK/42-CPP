@@ -3,18 +3,14 @@ NAME = abstract_animal
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
-OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+$(NAME):
+	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(NAME)
 
 fclean: clean
 	rm -f $(NAME)
