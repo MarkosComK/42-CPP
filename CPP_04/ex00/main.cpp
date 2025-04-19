@@ -43,8 +43,8 @@ void test_wrong_animals() {
 	std::cout << "Wrong base type: " << wrong_meta->getType() << std::endl;
 
 	std::cout << "\nTesting Sounds:" << std::endl;
-	wrong_cat->makeSound();
-	wrong_meta->makeSound();
+	wrong_cat->makeSound(); //here's the important line
+	wrong_meta->makeSound(); //observe that is the same sound as here
 
 	delete wrong_meta;
 	delete wrong_cat;
