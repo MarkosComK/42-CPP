@@ -1,12 +1,12 @@
 NAME = abstract_animal
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98
 SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
 
 all: $(NAME)
 
 $(NAME):
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+	$(CC) $(FLAGS) $(SRC) -o $(NAME)
 
 clean:
 	rm -f $(NAME)
